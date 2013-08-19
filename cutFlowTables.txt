@@ -1,0 +1,544 @@
+***********************************************************
+*                         Cut Flow                        *
+***********************************************************
+
+----------------------Data---------------------------
+
+Cut Flow Muon
+Skim &  2.77606e+06  $\pm$ 1.67e+03  \\ 
+Trigger and clean &  2.14964e+06  $\pm$ 1.47e+03  \\ 
+Di-muon &  523885  $\pm$ 724  \\ 
+Z mass veto &  79240  $\pm$ 281  \\ 
+$\geq$1 jets &  79206  $\pm$ 281  \\ 
+$\geq$2 jets &  67861  $\pm$ 261  \\ 
+MET &  41821  $\pm$ 205  \\ 
+$\geq$1 btags &  18092  $\pm$ 135  \\ 
+$\geq$2 btags &  6779  $\pm$ 82.3  \\ 
+$\geq$1 Photon &  22  $\pm$ 4.69  \\ 
+$\eq$1 Photon &  21  $\pm$ 4.58  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  2.77606e+06  $\pm$ 1.67e+03  \\ 
+Trigger and clean &  1604  $\pm$ 40  \\ 
+Di-electron &  381  $\pm$ 19.5  \\ 
+Z mass veto &  202  $\pm$ 14.2  \\ 
+$\geq$1 jets &  202  $\pm$ 14.2  \\ 
+$\geq$2 jets &  200  $\pm$ 14.1  \\ 
+MET &  151  $\pm$ 12.3  \\ 
+$\geq$1 btags &  127  $\pm$ 11.3  \\ 
+$\geq$2 btags &  48  $\pm$ 6.93  \\ 
+$\geq$1 Photon &  29  $\pm$ 5.39  \\ 
+$\eq$1 Photon &  23  $\pm$ 4.8  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  2.77606e+06  $\pm$ 1.67e+03  \\ 
+Trigger and clean &  2.14964e+06  $\pm$ 1.47e+03  \\ 
+Di-muon &  523885  $\pm$ 724  \\ 
+Z mass veto &  79240  $\pm$ 281  \\ 
+$\geq$1 jets &  79206  $\pm$ 281  \\ 
+$\geq$2 jets &  67861  $\pm$ 261  \\ 
+MET &  41821  $\pm$ 205  \\ 
+$\geq$1 btags &  18092  $\pm$ 135  \\ 
+$\geq$2 btags &  6779  $\pm$ 82.3  \\ 
+$\geq$1 Photon &  22  $\pm$ 4.69  \\ 
+$\eq$1 Photon &  21  $\pm$ 4.58  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  2.77606e+06  $\pm$ 1.67e+03  \\ 
+Trigger and clean &  1604  $\pm$ 40  \\ 
+Di-electron &  381  $\pm$ 19.5  \\ 
+Z mass veto &  202  $\pm$ 14.2  \\ 
+$\geq$1 jets &  202  $\pm$ 14.2  \\ 
+$\geq$2 jets &  200  $\pm$ 14.1  \\ 
+MET &  151  $\pm$ 12.3  \\ 
+$\geq$1 btags &  127  $\pm$ 11.3  \\ 
+$\geq$2 btags &  48  $\pm$ 6.93  \\ 
+$\geq$1 Photon &  29  $\pm$ 5.39  \\ 
+$\eq$1 Photon &  23  $\pm$ 4.8  \\ 
+
+----------------------TTJet-----------------------
+
+Cut Flow Muon
+Skim &  327862  $\pm$ 573  \\ 
+Trigger and clean &  92136.7  $\pm$ 304  \\ 
+Di-muon &  24086.8  $\pm$ 155  \\ 
+Z mass veto &  18393  $\pm$ 136  \\ 
+$\geq$1 jets &  18393  $\pm$ 136  \\ 
+$\geq$2 jets &  18221.5  $\pm$ 135  \\ 
+MET &  17025  $\pm$ 130  \\ 
+$\geq$1 btags &  14408.6  $\pm$ 120  \\ 
+$\geq$2 btags &  6410.14  $\pm$ 80.1  \\ 
+$\geq$1 Photon &  17.1368  $\pm$ 4.14  \\ 
+$\eq$1 Photon &  16.264  $\pm$ 4.03  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  327862  $\pm$ 573  \\ 
+Trigger and clean &  34792.7  $\pm$ 187  \\ 
+Di-electron &  22740.3  $\pm$ 151  \\ 
+Z mass veto &  17409.9  $\pm$ 132  \\ 
+$\geq$1 jets &  17409.9  $\pm$ 132  \\ 
+$\geq$2 jets &  17236  $\pm$ 131  \\ 
+MET &  13364.5  $\pm$ 116  \\ 
+$\geq$1 btags &  11294.1  $\pm$ 106  \\ 
+$\geq$2 btags &  4957.44  $\pm$ 70.4  \\ 
+$\geq$1 Photon &  2768.48  $\pm$ 52.6  \\ 
+$\eq$1 Photon &  1950.67  $\pm$ 44.2  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  473716  $\pm$ 688  \\ 
+Trigger and clean &  134115  $\pm$ 366  \\ 
+Di-muon &  36527  $\pm$ 191  \\ 
+Z mass veto &  27891  $\pm$ 167  \\ 
+$\geq$1 jets &  27891  $\pm$ 167  \\ 
+$\geq$2 jets &  27609  $\pm$ 166  \\ 
+MET &  25809  $\pm$ 161  \\ 
+$\geq$1 btags &  21794  $\pm$ 148  \\ 
+$\geq$2 btags &  9664  $\pm$ 98.3  \\ 
+$\geq$1 Photon &  22  $\pm$ 4.69  \\ 
+$\eq$1 Photon &  22  $\pm$ 4.69  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  473716  $\pm$ 688  \\ 
+Trigger and clean &  49507  $\pm$ 223  \\ 
+Di-electron &  32543  $\pm$ 180  \\ 
+Z mass veto &  24932  $\pm$ 158  \\ 
+$\geq$1 jets &  24932  $\pm$ 158  \\ 
+$\geq$2 jets &  24668  $\pm$ 157  \\ 
+MET &  19133  $\pm$ 138  \\ 
+$\geq$1 btags &  16131  $\pm$ 127  \\ 
+$\geq$2 btags &  7031  $\pm$ 83.9  \\ 
+$\geq$1 Photon &  3663  $\pm$ 60.5  \\ 
+$\eq$1 Photon &  2775  $\pm$ 52.7  \\ 
+
+------------------TTJets_FullLept-----------------------
+
+Cut Flow Muon
+Skim &  1.43631e+06  $\pm$ 1.2e+03  \\ 
+Trigger and clean &  450875  $\pm$ 671  \\ 
+Di-muon &  209694  $\pm$ 458  \\ 
+Z mass veto &  162058  $\pm$ 403  \\ 
+$\geq$1 jets &  162057  $\pm$ 403  \\ 
+$\geq$2 jets &  160649  $\pm$ 401  \\ 
+MET &  150464  $\pm$ 388  \\ 
+$\geq$1 btags &  127515  $\pm$ 357  \\ 
+$\geq$2 btags &  56393.5  $\pm$ 237  \\ 
+$\geq$1 Photon &  114.671  $\pm$ 10.7  \\ 
+$\eq$1 Photon &  107.738  $\pm$ 10.4  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  1.43631e+06  $\pm$ 1.2e+03  \\ 
+Trigger and clean &  266266  $\pm$ 516  \\ 
+Di-electron &  197802  $\pm$ 445  \\ 
+Z mass veto &  152648  $\pm$ 391  \\ 
+$\geq$1 jets &  152648  $\pm$ 391  \\ 
+$\geq$2 jets &  151348  $\pm$ 389  \\ 
+MET &  117518  $\pm$ 343  \\ 
+$\geq$1 btags &  99442.7  $\pm$ 315  \\ 
+$\geq$2 btags &  43645.1  $\pm$ 209  \\ 
+$\geq$1 Photon &  24114.2  $\pm$ 155  \\ 
+$\eq$1 Photon &  16796.9  $\pm$ 130  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  3.6549e+06  $\pm$ 1.91e+03  \\ 
+Trigger and clean &  1.16507e+06  $\pm$ 1.08e+03  \\ 
+Di-muon &  556545  $\pm$ 746  \\ 
+Z mass veto &  430085  $\pm$ 656  \\ 
+$\geq$1 jets &  430084  $\pm$ 656  \\ 
+$\geq$2 jets &  426008  $\pm$ 653  \\ 
+MET &  399175  $\pm$ 632  \\ 
+$\geq$1 btags &  337649  $\pm$ 581  \\ 
+$\geq$2 btags &  148868  $\pm$ 386  \\ 
+$\geq$1 Photon &  282  $\pm$ 16.8  \\ 
+$\eq$1 Photon &  282  $\pm$ 16.8  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  3.6549e+06  $\pm$ 1.91e+03  \\ 
+Trigger and clean &  665849  $\pm$ 816  \\ 
+Di-electron &  495308  $\pm$ 704  \\ 
+Z mass veto &  382342  $\pm$ 618  \\ 
+$\geq$1 jets &  382342  $\pm$ 618  \\ 
+$\geq$2 jets &  378827  $\pm$ 615  \\ 
+MET &  294649  $\pm$ 543  \\ 
+$\geq$1 btags &  248777  $\pm$ 499  \\ 
+$\geq$2 btags &  108761  $\pm$ 330  \\ 
+$\geq$1 Photon &  56171  $\pm$ 237  \\ 
+$\eq$1 Photon &  42290  $\pm$ 206  \\ 
+
+-------------------TTJets_Hadronic-----------------------
+
+Cut Flow Muon
+Skim &  40688.6  $\pm$ 202  \\ 
+Trigger and clean &  7041.25  $\pm$ 83.9  \\ 
+Di-muon &  1.04515  $\pm$ 1.02  \\ 
+Z mass veto &  0.588808  $\pm$ 0.767  \\ 
+$\geq$1 jets &  0.588808  $\pm$ 0.767  \\ 
+$\geq$2 jets &  0.588808  $\pm$ 0.767  \\ 
+MET &  0.58748  $\pm$ 0.766  \\ 
+$\geq$1 btags &  0.58748  $\pm$ 0.766  \\ 
+$\geq$2 btags &  0.377795  $\pm$ 0.615  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  40688.6  $\pm$ 202  \\ 
+Trigger and clean &  318.002  $\pm$ 17.8  \\ 
+Di-electron &  0  $\pm$ 0  \\ 
+Z mass veto &  0  $\pm$ 0  \\ 
+$\geq$1 jets &  0  $\pm$ 0  \\ 
+$\geq$2 jets &  0  $\pm$ 0  \\ 
+MET &  0  $\pm$ 0  \\ 
+$\geq$1 btags &  0  $\pm$ 0  \\ 
+$\geq$2 btags &  0  $\pm$ 0  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  232253  $\pm$ 482  \\ 
+Trigger and clean &  40369  $\pm$ 201  \\ 
+Di-muon &  9  $\pm$ 3  \\ 
+Z mass veto &  6  $\pm$ 2.45  \\ 
+$\geq$1 jets &  6  $\pm$ 2.45  \\ 
+$\geq$2 jets &  6  $\pm$ 2.45  \\ 
+MET &  4  $\pm$ 2  \\ 
+$\geq$1 btags &  4  $\pm$ 2  \\ 
+$\geq$2 btags &  2  $\pm$ 1.41  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  232253  $\pm$ 482  \\ 
+Trigger and clean &  1766  $\pm$ 42  \\ 
+Di-electron &  0  $\pm$ 0  \\ 
+Z mass veto &  0  $\pm$ 0  \\ 
+$\geq$1 jets &  0  $\pm$ 0  \\ 
+$\geq$2 jets &  0  $\pm$ 0  \\ 
+MET &  0  $\pm$ 0  \\ 
+$\geq$1 btags &  0  $\pm$ 0  \\ 
+$\geq$2 btags &  0  $\pm$ 0  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+
+-----------------------TTJets_SemiLept----------------
+
+Cut Flow Muon
+Skim &  330782  $\pm$ 575  \\ 
+Trigger and clean &  84294.3  $\pm$ 290  \\ 
+Di-muon &  339.923  $\pm$ 18.4  \\ 
+Z mass veto &  228.311  $\pm$ 15.1  \\ 
+$\geq$1 jets &  228.311  $\pm$ 15.1  \\ 
+$\geq$2 jets &  221.712  $\pm$ 14.9  \\ 
+MET &  201.721  $\pm$ 14.2  \\ 
+$\geq$1 btags &  160.957  $\pm$ 12.7  \\ 
+$\geq$2 btags &  70.2848  $\pm$ 8.38  \\ 
+$\geq$1 Photon &  0.202093  $\pm$ 0.45  \\ 
+$\eq$1 Photon &  0.190058  $\pm$ 0.436  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  330782  $\pm$ 575  \\ 
+Trigger and clean &  10077.4  $\pm$ 100  \\ 
+Di-electron &  321.124  $\pm$ 17.9  \\ 
+Z mass veto &  224.577  $\pm$ 15  \\ 
+$\geq$1 jets &  224.577  $\pm$ 15  \\ 
+$\geq$2 jets &  222.303  $\pm$ 14.9  \\ 
+MET &  146.433  $\pm$ 12.1  \\ 
+$\geq$1 btags &  110.762  $\pm$ 10.5  \\ 
+$\geq$2 btags &  31.3327  $\pm$ 5.6  \\ 
+$\geq$1 Photon &  11.1583  $\pm$ 3.34  \\ 
+$\eq$1 Photon &  10.2766  $\pm$ 3.21  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  1.74136e+06  $\pm$ 1.32e+03  \\ 
+Trigger and clean &  443202  $\pm$ 666  \\ 
+Di-muon &  1970  $\pm$ 44.4  \\ 
+Z mass veto &  1317  $\pm$ 36.3  \\ 
+$\geq$1 jets &  1317  $\pm$ 36.3  \\ 
+$\geq$2 jets &  1282  $\pm$ 35.8  \\ 
+MET &  1172  $\pm$ 34.2  \\ 
+$\geq$1 btags &  930  $\pm$ 30.5  \\ 
+$\geq$2 btags &  396  $\pm$ 19.9  \\ 
+$\geq$1 Photon &  1  $\pm$ 1  \\ 
+$\eq$1 Photon &  1  $\pm$ 1  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  1.74136e+06  $\pm$ 1.32e+03  \\ 
+Trigger and clean &  51839  $\pm$ 228  \\ 
+Di-electron &  1703  $\pm$ 41.3  \\ 
+Z mass veto &  1203  $\pm$ 34.7  \\ 
+$\geq$1 jets &  1203  $\pm$ 34.7  \\ 
+$\geq$2 jets &  1189  $\pm$ 34.5  \\ 
+MET &  787  $\pm$ 28.1  \\ 
+$\geq$1 btags &  598  $\pm$ 24.5  \\ 
+$\geq$2 btags &  172  $\pm$ 13.1  \\ 
+$\geq$1 Photon &  55  $\pm$ 7.42  \\ 
+$\eq$1 Photon &  54  $\pm$ 7.35  \\ 
+
+--------------------T_tW------------------------------
+
+Cut Flow Muon
+Skim &  8889.59  $\pm$ 94.3  \\ 
+Trigger and clean &  2227.44  $\pm$ 47.2  \\ 
+Di-muon &  616.296  $\pm$ 24.8  \\ 
+Z mass veto &  481.856  $\pm$ 22  \\ 
+$\geq$1 jets &  481.856  $\pm$ 22  \\ 
+$\geq$2 jets &  467.574  $\pm$ 21.6  \\ 
+MET &  438.384  $\pm$ 20.9  \\ 
+$\geq$1 btags &  318.97  $\pm$ 17.9  \\ 
+$\geq$2 btags &  90.0168  $\pm$ 9.49  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  8889.59  $\pm$ 94.3  \\ 
+Trigger and clean &  906.285  $\pm$ 30.1  \\ 
+Di-electron &  558.333  $\pm$ 23.6  \\ 
+Z mass veto &  430.848  $\pm$ 20.8  \\ 
+$\geq$1 jets &  430.848  $\pm$ 20.8  \\ 
+$\geq$2 jets &  423.721  $\pm$ 20.6  \\ 
+MET &  333.822  $\pm$ 18.3  \\ 
+$\geq$1 btags &  255.946  $\pm$ 16  \\ 
+$\geq$2 btags &  77.7297  $\pm$ 8.82  \\ 
+$\geq$1 Photon &  43.5343  $\pm$ 6.6  \\ 
+$\eq$1 Photon &  27.4605  $\pm$ 5.24  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  20160  $\pm$ 142  \\ 
+Trigger and clean &  5124  $\pm$ 71.6  \\ 
+Di-muon &  1500  $\pm$ 38.7  \\ 
+Z mass veto &  1165  $\pm$ 34.1  \\ 
+$\geq$1 jets &  1165  $\pm$ 34.1  \\ 
+$\geq$2 jets &  1132  $\pm$ 33.6  \\ 
+MET &  1062  $\pm$ 32.6  \\ 
+$\geq$1 btags &  766  $\pm$ 27.7  \\ 
+$\geq$2 btags &  211  $\pm$ 14.5  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  20160  $\pm$ 142  \\ 
+Trigger and clean &  2022  $\pm$ 45  \\ 
+Di-electron &  1244  $\pm$ 35.3  \\ 
+Z mass veto &  970  $\pm$ 31.1  \\ 
+$\geq$1 jets &  970  $\pm$ 31.1  \\ 
+$\geq$2 jets &  949  $\pm$ 30.8  \\ 
+MET &  738  $\pm$ 27.2  \\ 
+$\geq$1 btags &  560  $\pm$ 23.7  \\ 
+$\geq$2 btags &  175  $\pm$ 13.2  \\ 
+$\geq$1 Photon &  91  $\pm$ 9.54  \\ 
+$\eq$1 Photon &  62  $\pm$ 7.87  \\ 
+
+----------------------Tbar_tW---------------------------
+
+Cut Flow Muon
+Skim &  8828.17  $\pm$ 94  \\ 
+Trigger and clean &  2240.75  $\pm$ 47.3  \\ 
+Di-muon &  613.567  $\pm$ 24.8  \\ 
+Z mass veto &  478.646  $\pm$ 21.9  \\ 
+$\geq$1 jets &  478.646  $\pm$ 21.9  \\ 
+$\geq$2 jets &  467.603  $\pm$ 21.6  \\ 
+MET &  440.28  $\pm$ 21  \\ 
+$\geq$1 btags &  337.571  $\pm$ 18.4  \\ 
+$\geq$2 btags &  85.5778  $\pm$ 9.25  \\ 
+$\geq$1 Photon &  0.160559  $\pm$ 0.401  \\ 
+$\eq$1 Photon &  0.14728  $\pm$ 0.384  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  8828.17  $\pm$ 94  \\ 
+Trigger and clean &  898.433  $\pm$ 30  \\ 
+Di-electron &  559.108  $\pm$ 23.6  \\ 
+Z mass veto &  437.388  $\pm$ 20.9  \\ 
+$\geq$1 jets &  437.388  $\pm$ 20.9  \\ 
+$\geq$2 jets &  425.897  $\pm$ 20.6  \\ 
+MET &  325.514  $\pm$ 18  \\ 
+$\geq$1 btags &  245.675  $\pm$ 15.7  \\ 
+$\geq$2 btags &  63.8464  $\pm$ 7.99  \\ 
+$\geq$1 Photon &  39.4017  $\pm$ 6.28  \\ 
+$\eq$1 Photon &  27.1421  $\pm$ 5.21  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  20363  $\pm$ 143  \\ 
+Trigger and clean &  5223  $\pm$ 72.3  \\ 
+Di-muon &  1533  $\pm$ 39.2  \\ 
+Z mass veto &  1196  $\pm$ 34.6  \\ 
+$\geq$1 jets &  1196  $\pm$ 34.6  \\ 
+$\geq$2 jets &  1164  $\pm$ 34.1  \\ 
+MET &  1096  $\pm$ 33.1  \\ 
+$\geq$1 btags &  840  $\pm$ 29  \\ 
+$\geq$2 btags &  203  $\pm$ 14.2  \\ 
+$\geq$1 Photon &  1  $\pm$ 1  \\ 
+$\eq$1 Photon &  1  $\pm$ 1  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  20363  $\pm$ 143  \\ 
+Trigger and clean &  2045  $\pm$ 45.2  \\ 
+Di-electron &  1283  $\pm$ 35.8  \\ 
+Z mass veto &  1001  $\pm$ 31.6  \\ 
+$\geq$1 jets &  1001  $\pm$ 31.6  \\ 
+$\geq$2 jets &  974  $\pm$ 31.2  \\ 
+MET &  745  $\pm$ 27.3  \\ 
+$\geq$1 btags &  565  $\pm$ 23.8  \\ 
+$\geq$2 btags &  146  $\pm$ 12.1  \\ 
+$\geq$1 Photon &  87  $\pm$ 9.33  \\ 
+$\eq$1 Photon &  63  $\pm$ 7.94  \\ 
+
+-----------------------WJetsToLNu-------------------------
+
+Cut Flow Muon
+Skim &  215938  $\pm$ 465  \\ 
+Trigger and clean &  10477.7  $\pm$ 102  \\ 
+Di-muon &  45.227  $\pm$ 6.73  \\ 
+Z mass veto &  45.227  $\pm$ 6.73  \\ 
+$\geq$1 jets &  45.227  $\pm$ 6.73  \\ 
+$\geq$2 jets &  45.227  $\pm$ 6.73  \\ 
+MET &  45.2264  $\pm$ 6.73  \\ 
+$\geq$1 btags &  16.5001  $\pm$ 4.06  \\ 
+$\geq$2 btags &  16.5001  $\pm$ 4.06  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  215938  $\pm$ 465  \\ 
+Trigger and clean &  10598.9  $\pm$ 103  \\ 
+Di-electron &  438.011  $\pm$ 20.9  \\ 
+Z mass veto &  309.418  $\pm$ 17.6  \\ 
+$\geq$1 jets &  309.418  $\pm$ 17.6  \\ 
+$\geq$2 jets &  184.115  $\pm$ 13.6  \\ 
+MET &  104.908  $\pm$ 10.2  \\ 
+$\geq$1 btags &  0  $\pm$ 0  \\ 
+$\geq$2 btags &  0  $\pm$ 0  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  17742  $\pm$ 133  \\ 
+Trigger and clean &  865  $\pm$ 29.4  \\ 
+Di-muon &  5  $\pm$ 2.24  \\ 
+Z mass veto &  5  $\pm$ 2.24  \\ 
+$\geq$1 jets &  5  $\pm$ 2.24  \\ 
+$\geq$2 jets &  5  $\pm$ 2.24  \\ 
+MET &  4  $\pm$ 2  \\ 
+$\geq$1 btags &  1  $\pm$ 1  \\ 
+$\geq$2 btags &  1  $\pm$ 1  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  17742  $\pm$ 133  \\ 
+Trigger and clean &  873  $\pm$ 29.5  \\ 
+Di-electron &  40  $\pm$ 6.32  \\ 
+Z mass veto &  30  $\pm$ 5.48  \\ 
+$\geq$1 jets &  30  $\pm$ 5.48  \\ 
+$\geq$2 jets &  20  $\pm$ 4.47  \\ 
+MET &  12  $\pm$ 3.46  \\ 
+$\geq$1 btags &  0  $\pm$ 0  \\ 
+$\geq$2 btags &  0  $\pm$ 0  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+
+---------------------DYJetstoLL_M-10to50---------------------
+
+Cut Flow Muon
+Skim &  86715.7  $\pm$ 294  \\ 
+Trigger and clean &  36318  $\pm$ 191  \\ 
+Di-muon &  13987.7  $\pm$ 118  \\ 
+Z mass veto &  13987.7  $\pm$ 118  \\ 
+$\geq$1 jets &  13987.7  $\pm$ 118  \\ 
+$\geq$2 jets &  11875.9  $\pm$ 109  \\ 
+MET &  5391.51  $\pm$ 73.4  \\ 
+$\geq$1 btags &  599.918  $\pm$ 24.5  \\ 
+$\geq$2 btags &  50.3152  $\pm$ 7.09  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  86715.7  $\pm$ 294  \\ 
+Trigger and clean &  26660.6  $\pm$ 163  \\ 
+Di-electron &  12503.7  $\pm$ 112  \\ 
+Z mass veto &  12503.7  $\pm$ 112  \\ 
+$\geq$1 jets &  12503.7  $\pm$ 112  \\ 
+$\geq$2 jets &  10686.8  $\pm$ 103  \\ 
+MET &  552.232  $\pm$ 23.5  \\ 
+$\geq$1 btags &  41.3249  $\pm$ 6.43  \\ 
+$\geq$2 btags &  0  $\pm$ 0  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  16185  $\pm$ 127  \\ 
+Trigger and clean &  6789  $\pm$ 82.4  \\ 
+Di-muon &  2724  $\pm$ 52.2  \\ 
+Z mass veto &  2724  $\pm$ 52.2  \\ 
+$\geq$1 jets &  2724  $\pm$ 52.2  \\ 
+$\geq$2 jets &  2253  $\pm$ 47.5  \\ 
+MET &  1062  $\pm$ 32.6  \\ 
+$\geq$1 btags &  114  $\pm$ 10.7  \\ 
+$\geq$2 btags &  10  $\pm$ 3.16  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  16185  $\pm$ 127  \\ 
+Trigger and clean &  4903  $\pm$ 70  \\ 
+Di-electron &  2329  $\pm$ 48.3  \\ 
+Z mass veto &  2329  $\pm$ 48.3  \\ 
+$\geq$1 jets &  2329  $\pm$ 48.3  \\ 
+$\geq$2 jets &  1956  $\pm$ 44.2  \\ 
+MET &  124  $\pm$ 11.1  \\ 
+$\geq$1 btags &  14  $\pm$ 3.74  \\ 
+$\geq$2 btags &  0  $\pm$ 0  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+
+------------------------DYJetstoLL_M-50--------------------
+
+Cut Flow Muon
+Skim &  1.17655e+06  $\pm$ 1.08e+03  \\ 
+Trigger and clean &  555931  $\pm$ 746  \\ 
+Di-muon &  380946  $\pm$ 617  \\ 
+Z mass veto &  31193.5  $\pm$ 177  \\ 
+$\geq$1 jets &  31159  $\pm$ 177  \\ 
+$\geq$2 jets &  25226.2  $\pm$ 159  \\ 
+MET &  11223.7  $\pm$ 106  \\ 
+$\geq$1 btags &  966.625  $\pm$ 31.1  \\ 
+$\geq$2 btags &  71.5262  $\pm$ 8.46  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron
+Skim &  1.17655e+06  $\pm$ 1.08e+03  \\ 
+Trigger and clean &  431570  $\pm$ 657  \\ 
+Di-electron &  319428  $\pm$ 565  \\ 
+Z mass veto &  27108  $\pm$ 165  \\ 
+$\geq$1 jets &  27100  $\pm$ 165  \\ 
+$\geq$2 jets &  22955.7  $\pm$ 152  \\ 
+MET &  1863.43  $\pm$ 43.2  \\ 
+$\geq$1 btags &  196.109  $\pm$ 14  \\ 
+$\geq$2 btags &  13.9797  $\pm$ 3.74  \\ 
+$\geq$1 Photon &  11.0723  $\pm$ 3.33  \\ 
+$\eq$1 Photon &  9.17188  $\pm$ 3.03  \\ 
+***********************************************************
+Cut Flow Muon Unweighted
+Skim &  696338  $\pm$ 834  \\ 
+Trigger and clean &  333022  $\pm$ 577  \\ 
+Di-muon &  231670  $\pm$ 481  \\ 
+Z mass veto &  18921  $\pm$ 138  \\ 
+$\geq$1 jets &  18904  $\pm$ 137  \\ 
+$\geq$2 jets &  14649  $\pm$ 121  \\ 
+MET &  6898  $\pm$ 83.1  \\ 
+$\geq$1 btags &  593  $\pm$ 24.4  \\ 
+$\geq$2 btags &  46  $\pm$ 6.78  \\ 
+$\geq$1 Photon &  0  $\pm$ 0  \\ 
+$\eq$1 Photon &  0  $\pm$ 0  \\ 
+***********************************************************
+Cut Flow Electron Unweighted
+Skim &  696338  $\pm$ 834  \\ 
+Trigger and clean &  248225  $\pm$ 498  \\ 
+Di-electron &  183489  $\pm$ 428  \\ 
+Z mass veto &  15560  $\pm$ 125  \\ 
+$\geq$1 jets &  15556  $\pm$ 125  \\ 
+$\geq$2 jets &  12605  $\pm$ 112  \\ 
+MET &  1146  $\pm$ 33.9  \\ 
+$\geq$1 btags &  118  $\pm$ 10.9  \\ 
+$\geq$2 btags &  11  $\pm$ 3.32  \\ 
+$\geq$1 Photon &  7  $\pm$ 2.65  \\ 
+$\eq$1 Photon &  6  $\pm$ 2.45  \\ 
+
