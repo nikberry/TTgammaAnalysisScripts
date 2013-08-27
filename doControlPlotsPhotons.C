@@ -6,6 +6,7 @@
 #include "TLatex.h"
 #include "TLegend.h"
 #include "THStack.h"
+#include "TLine.h"
 #include <string.h>
 #include <iostream>
 #include <iomanip>
@@ -22,8 +23,8 @@ TString Obj = "MuMu/";
 //TString Obj = "EE/";
 //TString Obj = "EMu/";
 
-TString RefSelection = "One Photon/";
-//TString RefSelection = "Ref selection/";
+//TString RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
+TString RefSelection = "Ref selection/";   //if use "TTbarDiLeptonAnalysis/"
 
 //TString Type = "MET/";
 TString Type = "Photons/";
@@ -35,17 +36,15 @@ TString Next = "AllPhotons/";
 
 TString Systematic = "central/";
 
-TString Cut = "PassesCutsUpToOnePhoton1Btag/";
-//TString Cut = "PassesCutsUpTo1Btag/";
-//TString Cut = "PassesCutsUpToOnePhoton/";
-//TString Cut = "PassesCutsUpToPhoton/";
-//TString Cut = "PassesCutsUpToMET/";
+//TString Cut = "TTbarPhotonAnalysis/";
+TString Cut = "TTbarDiLeptonAnalysis/";
+
 
 //MuMu variables
 const int N = 16;
-int RebinFact;
+//int RebinFact;
 
-int RebinFacts[N] = {20, 25, 5, 5, 2, 2, 6, 6, 19, 15, 1, 5, 2, 1, 1, 1}; //SignalPhotons PassesCutsUpToOnePhoton1Btag  
+int RebinFacts[N] = {20, 25, 5, 5, 2, 2, 6, 6, 19, 15, 1, 5, 2, 20, 20, 20}; //SignalPhotons PassesCutsUpToOnePhoton1Btag  
 //int RebinFacts[N] = {12, 11, 3, 3, 2, 2, 6, 6, 12, 16, 4, 4, 2}; //AllPhotons PassesCutsUpTo1Btag Muons
 //int RebinFacts[N] = {58, 40, 18, 18, 5, 5, 5, 5, 36, 50, 9, 8, 3}; //SignalPhotons PassesCutsUpTo1Btag Muons
 
@@ -84,9 +83,9 @@ TH1D* DY1 = getSample("DYJetsToLL_M-10To50", 1, Obj, RefSelection, Type, Next, V
 TH1D* DY2 = getSample("DYJetsToLL_M-50", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* T_tW = getSample("T_tW-channel", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* Tbar_tW = getSample("Tbar_tW-channel",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-TH1D* ZZ = getSample("ZZ",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-TH1D* WW = getSample("WW",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-TH1D* WZ = getSample("WZ",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* ZZ = getSample("ZZtoAnything",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* WW = getSample("WWtoAnything",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* WZ = getSample("WZtoAnything",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
 //QCD
 TH1D* QCD_Pt_20_30_BCtoE = getSample("QCD_Pt_20_30_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
@@ -97,13 +96,13 @@ TH1D* QCD_Pt_30_80_EMEnriched = getSample("QCD_Pt_30_80_EMEnriched",1, Obj, RefS
 TH1D* QCD_Pt_80_170_BCtoE = getSample("QCD_Pt_80_170_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* QCD_Pt_80_170_EMEnriched = getSample("QCD_Pt_80_170_EMEnriched",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
-TH1D* QCD_Pt_20_MuEnrichedPt_15 = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-  QCD_Pt_20_MuEnrichedPt_15->Add(QCD_Pt_20_30_BCtoE);
-  QCD_Pt_20_MuEnrichedPt_15->Add(QCD_Pt_20_30_EMEnriched);
-  QCD_Pt_20_MuEnrichedPt_15->Add(QCD_Pt_30_80_BCtoE);
-  QCD_Pt_20_MuEnrichedPt_15->Add(QCD_Pt_30_80_EMEnriched);
-  QCD_Pt_20_MuEnrichedPt_15->Add(QCD_Pt_80_170_BCtoE);
-  QCD_Pt_20_MuEnrichedPt_15->Add(QCD_Pt_80_170_EMEnriched);
+TH1D* QCD_all = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+  QCD_all->Add(QCD_Pt_20_30_BCtoE);
+  QCD_all->Add(QCD_Pt_20_30_EMEnriched);
+  QCD_all->Add(QCD_Pt_30_80_BCtoE);
+  QCD_all->Add(QCD_Pt_30_80_EMEnriched);
+  QCD_all->Add(QCD_Pt_80_170_BCtoE);
+  QCD_all->Add(QCD_Pt_80_170_EMEnriched);
   
 
 TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
@@ -116,7 +115,7 @@ TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
   allMC->Add(ZZ);
   allMC->Add(WW);
   allMC->Add(WZ);
-  allMC->Add(QCD_Pt_20_MuEnrichedPt_15);
+  allMC->Add(QCD_all);
 //   allMC->Add(QCD_Pt_20_30_BCtoE);
 //   allMC->Add(QCD_Pt_20_30_EMEnriched);
 //   allMC->Add(QCD_Pt_30_80_BCtoE);
@@ -131,7 +130,7 @@ THStack *hs = new THStack("hs","test");
 //   hs->Add(QCD_Pt_30_80_EMEnriched);
 //   hs->Add(QCD_Pt_80_170_BCtoE);
 //   hs->Add(QCD_Pt_80_170_EMEnriched);
-  hs->Add(QCD_Pt_20_MuEnrichedPt_15);
+  hs->Add(QCD_all);
   hs->Add(wjets);
   hs->Add(WZ); 
   hs->Add(WW);
@@ -156,7 +155,7 @@ std::cout << "Anti-Single top: " << Tbar_tW->Integral() << std::endl;
 std::cout << "ZZ: " << ZZ->Integral() << std::endl;
 std::cout << "WW: " << WW->Integral() << std::endl;
 std::cout << "WZ: " << WZ->Integral() << std::endl;
-std::cout << "QCD: " << QCD_Pt_20_MuEnrichedPt_15->Integral() << std::endl;
+std::cout << "QCD: " << QCD_all->Integral() << std::endl;
 
 
   //draw histos to files
@@ -168,14 +167,14 @@ std::cout << "QCD: " << QCD_Pt_20_MuEnrichedPt_15->Integral() << std::endl;
 
   data->Draw();
   data->SetAxisRange(MinX, MaxX, "X");
-  data->Draw();
+//  data->Draw();
 
-  hs->Draw("H");
+  hs->Draw("hist");
   hs->GetXaxis()->SetLimits(MinX, MaxX);	
 	
   hs->SetMaximum(data->GetBinContent(data->GetMaximumBin())*1.3);
 
-  hs->Draw();
+//  hs->Draw();
   data->Draw("E same");
   data->SetMarkerStyle(20);
   
@@ -192,15 +191,15 @@ std::cout << "QCD: " << QCD_Pt_20_MuEnrichedPt_15->Integral() << std::endl;
 	tleg2->AddEntry(data , "2012 data", "lpe");
 	tleg2->AddEntry(ttgamma , "t#bar{t}#gamma", "lf");
 	tleg2->AddEntry(tt , "t#bar{t}", "lf");
-	tleg2->AddEntry(T_tW, "single-t"      , "lf");
-	tleg2->AddEntry(Tbar_tW, "anti-single-tW"      , "lf");	
-	tleg2->AddEntry(DY1 , "DYJetsToLL", "lf");
-	tleg2->AddEntry(DY2 , "DYJetsToLL", "lf");
-	tleg2->AddEntry(ZZ, "ZZ", "lf");
-	tleg2->AddEntry(WW, "WW", "lf");
-	tleg2->AddEntry(WZ , "WZ", "lf");
-	tleg2->AddEntry(wjets , "w+jets", "lf");
-	tleg2->AddEntry(QCD_Pt_20_MuEnrichedPt_15, "QCD", "lf");
+	tleg2->AddEntry(T_tW, "Single Top"      , "lf");
+//	tleg2->AddEntry(Tbar_tW, "anti-single-tW"      , "lf");	
+	tleg2->AddEntry(DY1 , "Z+Jets", "lf");
+//	tleg2->AddEntry(DY2 , "DYJetsToLL", "lf");
+	tleg2->AddEntry(ZZ, "Diboson", "lf");
+//	tleg2->AddEntry(WW, "WW", "lf");
+//	tleg2->AddEntry(WZ , "WZ", "lf");
+	tleg2->AddEntry(wjets , "W+Jets", "lf");
+	tleg2->AddEntry(QCD_all, "QCD", "lf");
 	
  	tleg2->Draw("same");	
 
@@ -220,7 +219,7 @@ std::cout << "QCD: " << QCD_Pt_20_MuEnrichedPt_15->Integral() << std::endl;
    pad2->cd();
 
    TH1D * ratio = (TH1D*)data->Clone("ratio plot");
-   ratio->Sumw2();
+   //ratio->Sumw2();
    ratio->SetStats(0);
    ratio->Divide(allMC);
    ratio->SetMinimum(0);
