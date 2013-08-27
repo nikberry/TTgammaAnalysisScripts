@@ -1,7 +1,0 @@
-Unknown sample= QCD_Pt-30to80_EMEnriched
-Error during configuration parsing: <type 'exceptions.SystemExit'>:   File "<string>", line 6, in load_from_file
-
-  File "BristolAnalysis/Tools/python/master_2012_cfg.py", line 106, in <module>
-    sys.exit()
-
-terminate called after throwing an instance of 'char const*'

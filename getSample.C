@@ -18,7 +18,7 @@ TText* doPrelim(float x, float y);
 
 
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut){
-	TString dir = "rootFiles/"+ Systematic + Cut;
+	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version2/"+ Systematic;
 	
 	TString syst = "";
 	
@@ -46,64 +46,23 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	TFile* file = new TFile(dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root");
 	//TDirectoryFile* folder = (TDirectoryFile*) file->Get("TTbarPlusMetAnalysis/QCD No Iso/Muon/");
 
-	cout << dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
+	cout << "file: "<< dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
+	cout << "folder: "<< "TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
 
-	if( Cut == "PassesCutsUpToOnePhoton1Btag/" ) {
+	TH1D* plot;
+	TH1D* plot1;
+	TH1D* plot2;
+	TH1D* plot3;
+	TH1D* plot4;
 
-	TH1D* plot = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "1btag");
-	TH1D* plot2 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "2btags");
-	TH1D* plot3 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "3btags");
-	TH1D* plot4 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
+	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
+	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
+	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
+	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
 
 	plot->Add(plot2);
 	plot->Add(plot3);	
 	plot->Add(plot4);
-	
-	} else if( Cut == "PassesCutsUpTo1Btag/" ) {
-	
-	TH1D* plot = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "0btag");
-	TH1D* plot1 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "1btag");
-	TH1D* plot2 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "2btags");
-	TH1D* plot3 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "3btags");
-	TH1D* plot4 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
-
-	plot->Add(plot1);
-	plot->Add(plot2);
-	plot->Add(plot3);	
-	plot->Add(plot4);
-	
-	} else if( Cut == "PassesCutsUpToOnePhoton/" ) {
-
-	TH1D* plot = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "2btags");
-	TH1D* plot3 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "3btags");
-	TH1D* plot4 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
-
-	plot->Add(plot3);	
-	plot->Add(plot4);
-	
-	} else if( Cut == "PassesCutsUpToPhoton/" ) {
-	
-	TH1D* plot = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "2btags");
-	TH1D* plot3 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "3btags");
-	TH1D* plot4 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
-
-	plot->Add(plot3);	
-	plot->Add(plot4);
-	
-	} else if( Cut == "PassesCutsUptoMET/" ) {
-	
-	TH1D* plot = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "0btag");
-	TH1D* plot1 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "1btag");
-	TH1D* plot2 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "2btags");
-	TH1D* plot3 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "3btags");
-	TH1D* plot4 = (TH1D*) file->Get("TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
-
-	plot->Add(plot1);
-	plot->Add(plot2);
-	plot->Add(plot3);	
-	plot->Add(plot4);
-	
-	}
 
 
 	if(sample == "TTGamma"){
@@ -118,13 +77,13 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	}else if(sample == "DYJetsToLL_M-10To50" || sample == "DYJetsToLL_M-50"){
 	plot->SetFillColor(kAzure-2);
 	plot->SetLineColor(kAzure-2);
-	}else if(sample == "ZZ"){
+	}else if(sample == "ZZtoAnything"){
 	plot->SetFillColor(kGreen);
 	plot->SetLineColor(kGreen);
-	}else if(sample == "WW"){
+	}else if(sample == "WWtoAnything"){
 	plot->SetFillColor(kGreen+1);
 	plot->SetLineColor(kGreen+1);
-	}else if(sample == "WZ"){
+	}else if(sample == "WZtoAnything"){
 	plot->SetFillColor(kGreen+2);
 	plot->SetLineColor(kGreen+2);
 	}else if(sample == "QCD_Pt_20_MuEnrichedPt_15"){
@@ -161,6 +120,12 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 
 	//plot->Scale(weight);
 	plot->Rebin(RebinFact);
+	
+// 	if(sample != "DoubleMu" || sample != "DoubleELectron" || sample != "MuEG"){
+// 	//plot->SetStats(0);
+// 	plot->SetMarkerStyle(0);
+// 	}
+	
 	
 	plot->SetDirectory(gROOT);
 	file->Close();
