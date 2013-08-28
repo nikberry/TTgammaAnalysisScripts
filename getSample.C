@@ -14,11 +14,11 @@
 
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut);
 //TH1D* getQCD(TString Obj, TString Variable, int RebinFact);
-TText* doPrelim(float x, float y);
+TText* doPrelim(float x, float y, TString Cut, TString Channel);
 
 
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut){
-	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version2/"+ Systematic;
+	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version3/"+ Systematic;
 	
 	TString syst = "";
 	
@@ -155,11 +155,25 @@ TH1D* getQCD(TString Obj, TString Variable, int rebinFact){
 
 }
  */
-TText* doPrelim(float x, float y)
+TText* doPrelim(float x, float y, TString Cut, TString Channel)
 {
   std::ostringstream stream;
-  stream  << "#mu#mu, #geq 2 jets, #geq 1 b-tags, #geq 1 #gamma                                 CMS Preliminary, L = 19.584 fb^{-1}";   
 
+  if(Channel == "MuMu/"){
+  	stream << "#mu#mu";
+  }else if(Channel == "EE/"){
+  	stream << "ee";
+  }else{
+  	stream << "e#mu";
+  }
+  
+  
+  if(Cut == "TTbarDiLeptonAnalysis/"){
+  	stream  << ", #geq 2 jets, #geq 1 b-tags                                             CMS Preliminary, L = 19.6 fb^{-1}";
+  }else{
+  	stream  << ", #geq 2 jets, #geq 1 b-tags, 1 #gamma                                   CMS Preliminary, L = 19.6 fb^{-1}";   
+  }
+  
   TLatex* text = new TLatex(x, y, stream.str().c_str());
   //text->SetTextAlign(33);  //left
   //text->SetTextAlign(22);  //center

@@ -19,32 +19,33 @@ void doControlPlotsPhotons();
 bool logPlot = false; //true for log plot
 
 //choose object
-TString Obj = "MuMu/";
-//TString Obj = "EE/";
+//TString Obj = "MuMu/";
+TString Obj = "EE/";
 //TString Obj = "EMu/";
 
-//TString RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
-TString RefSelection = "Ref selection/";   //if use "TTbarDiLeptonAnalysis/"
+TString Cut = "TTbarPhotonAnalysis/";
+//TString Cut = "TTbarDiLeptonAnalysis/";
 
-//TString Type = "MET/";
+//TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
+TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
+
+// if(Cut == "TTbarDiLeptonAnalysis/"){
+// 	RefSelection = "Ref selection/";   //if use "TTbarDiLeptonAnalysis/"
+// }else{
+// 	RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
+// }
+
 TString Type = "Photons/";
-//TString Type = "Jets";
-//TString Type = "DiMuon";
 
-TString Next = "AllPhotons/";
-//TString Next = "SignalPhotons/";
+//TString Next = "AllPhotons/";
+TString Next = "SignalPhotons/";
 
 TString Systematic = "central/";
 
-//TString Cut = "TTbarPhotonAnalysis/";
-TString Cut = "TTbarDiLeptonAnalysis/";
-
-
 //MuMu variables
 const int N = 16;
-//int RebinFact;
 
-int RebinFacts[N] = {20, 25, 5, 5, 2, 2, 6, 6, 19, 15, 1, 5, 2, 20, 20, 20}; //SignalPhotons PassesCutsUpToOnePhoton1Btag  
+int RebinFacts[N] = {20, 20, 5, 5, 2, 2, 5, 5, 25, 10, 1, 5, 1, 20, 20, 20}; //SignalPhotons PassesCutsUpToOnePhoton1Btag  
 //int RebinFacts[N] = {12, 11, 3, 3, 2, 2, 6, 6, 12, 16, 4, 4, 2}; //AllPhotons PassesCutsUpTo1Btag Muons
 //int RebinFacts[N] = {58, 40, 18, 18, 5, 5, 5, 5, 36, 50, 9, 8, 3}; //SignalPhotons PassesCutsUpTo1Btag Muons
 
@@ -54,10 +55,10 @@ TString Variables[N] = {"Photon_AbsEta_", "Photon_Eta_", "Photon_RhoCorrectedPFP
 "Photon_RhoCorrectedPFNeutralHadronIso_endcap_", "Photon_RhoCorrectedPFChargedHadronIso_barrel_", "Photon_RhoCorrectedPFChargedHadronIso_endcap_", "Photon_Pt_",
 "Photon_Phi_", "Photon_sigma_ietaieta_barrel_", "Photon_sigma_ietaieta_endcap_", "Photon_HtowoE_", "Photon_deltaR_electrons_", "Photon_deltaR_jets_", "Photon_deltaR_muons_"};
 double MinXs[N] = {0, -3 , 0 , 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, 0, 0};
-double MaxXs[N] = {3,  3 , 130, 130, 45, 45, 96, 96, 360, 4, 0.04, 0.1, 0.32, 5, 5, 5};
+double MaxXs[N] = {3,  3 , 130, 130, 40, 40, 100, 100, 260, 4, 0.05, 0.1, 0.06, 5, 5, 5};
 TString XTitles[N] = {"#left|#eta#right|_{#gamma}", "#eta_{#gamma}", "RhoCorrPhotonIsobarrel", "RhoCorrPhotonIsoendcap", "RhoCorrNeutralHadronIsobarrel",
-"RhoCorrNeutralHadronIsoendcap", "RhoCorrChargedHadronIsobarrel", "RhoCorrChargedHadronIsoendcap", "p_{T}(#gamma)",  "#phi_{#gamma}",  "#sigmaI#etaI#eta_barrel",
-"#sigmaI#etaI#eta_endcap",  "H/E", "#DeltaR(#gamma, e)", "#DeltaR(#gamma, jets)", "#DeltaR(#gamma, #mu)"};
+"RhoCorrNeutralHadronIsoendcap", "RhoCorrChargedHadronIsobarrel", "RhoCorrChargedHadronIsoendcap", "p_{T}(#gamma)",  "#phi_{#gamma}",  "#sigma i#etai#eta barrel",
+"#sigma i#etai#eta endcap",  "H/E", "#DeltaR(#gamma, e)", "#DeltaR(#gamma, jets)", "#DeltaR(#gamma, #mu)"};
 
 void doControlPlotsPhotons(){
 setTDRStyle();
@@ -71,8 +72,8 @@ TString Xtitle = XTitles[i];
 int RebinFact = RebinFacts[i];
 
 //Data
-TH1D* data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-//TH1D* data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+//TH1D* data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 //TH1D* data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
 //MC
@@ -116,20 +117,8 @@ TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
   allMC->Add(WW);
   allMC->Add(WZ);
   allMC->Add(QCD_all);
-//   allMC->Add(QCD_Pt_20_30_BCtoE);
-//   allMC->Add(QCD_Pt_20_30_EMEnriched);
-//   allMC->Add(QCD_Pt_30_80_BCtoE);
-//   allMC->Add(QCD_Pt_30_80_EMEnriched);
-//   allMC->Add(QCD_Pt_80_170_BCtoE);
-//   allMC->Add(QCD_Pt_80_170_EMEnriched);
 
 THStack *hs = new THStack("hs","test");
-//   hs->Add(QCD_Pt_20_30_BCtoE);
-//   hs->Add(QCD_Pt_20_30_EMEnriched);
-//   hs->Add(QCD_Pt_30_80_BCtoE);
-//   hs->Add(QCD_Pt_30_80_EMEnriched);
-//   hs->Add(QCD_Pt_80_170_BCtoE);
-//   hs->Add(QCD_Pt_80_170_EMEnriched);
   hs->Add(QCD_all);
   hs->Add(wjets);
   hs->Add(WZ); 
@@ -167,14 +156,11 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
 
   data->Draw();
   data->SetAxisRange(MinX, MaxX, "X");
-//  data->Draw();
 
   hs->Draw("hist");
-  hs->GetXaxis()->SetLimits(MinX, MaxX);	
 	
   hs->SetMaximum(data->GetBinContent(data->GetMaximumBin())*1.3);
 
-//  hs->Draw();
   data->Draw("E same");
   data->SetMarkerStyle(20);
   
@@ -203,7 +189,7 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
 	
  	tleg2->Draw("same");	
 
-	TText* textPrelim = doPrelim(0.20, 0.96);
+	TText* textPrelim = doPrelim(0.20, 0.96, Cut, Obj);
         textPrelim->Draw();
 
   c1->cd();
@@ -226,7 +212,12 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
    ratio->SetMaximum(2);
 
    cout << "width: " << ratio->GetBinWidth(1) << std::endl;
+   
+   if(MaxX <= 0.1){
+   ratio->SetAxisRange(MinX, MaxX);
+   }else{ 
    ratio->SetAxisRange(MinX, MaxX-ratio->GetBinWidth(1));
+   }
 
    ratio->SetLabelSize(0.1, "X");
    ratio->SetTitleOffset(0.5, "Y");
@@ -237,18 +228,17 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
    TLine *line = new TLine(MinX,1,MaxX,1);
    line->Draw();
 
-  TString plotName("plots/Control/" + Cut + Type + Next + Obj);
+  TString plotName("plots/Control/"+ Obj + Cut  + Type + Next );
   
   if(logPlot == true){
-    plotName += Variable+"Log.pdf";
-//    plotName += Nbtags+".pdf";
-    
+    plotName += Variable+"ge1b_Log.pdf";   
   }else{
-    plotName += Variable+".pdf";  
-//    plotName += Nbtags+".pdf";
+    plotName += Variable+"ge1b";  
   }
  
-  c1->SaveAs(plotName);
+  c1->SaveAs(plotName+".pdf");
+  c1->SaveAs(plotName+".png");
+  
   delete c1;
   
   }
