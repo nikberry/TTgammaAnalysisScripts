@@ -47,7 +47,7 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	//TDirectoryFile* folder = (TDirectoryFile*) file->Get("TTbarPlusMetAnalysis/QCD No Iso/Muon/");
 
 	cout << "file: "<< dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
-	cout << "folder: "<< "TTbarPhotonAnalysis/" + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
+	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
 
 	TH1D* plot;
 	TH1D* plot1;
@@ -86,7 +86,7 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	}else if(sample == "WZtoAnything"){
 	plot->SetFillColor(kGreen+2);
 	plot->SetLineColor(kGreen+2);
-	}else if(sample == "QCD_Pt_20_MuEnrichedPt_15"){
+	}else if(sample == "QCD_Pt_20_MuEnrichedPt_15" || sample == "QCD_All"){
 	plot->SetFillColor(kYellow);
 	plot->SetLineColor(kYellow);
 	}else if(sample == "QCD_Pt_20_30_BCtoE"){
@@ -120,12 +120,6 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 
 	//plot->Scale(weight);
 	plot->Rebin(RebinFact);
-	
-// 	if(sample != "DoubleMu" || sample != "DoubleELectron" || sample != "MuEG"){
-// 	//plot->SetStats(0);
-// 	plot->SetMarkerStyle(0);
-// 	}
-	
 	
 	plot->SetDirectory(gROOT);
 	file->Close();

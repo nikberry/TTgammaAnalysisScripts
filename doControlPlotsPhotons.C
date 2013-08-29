@@ -29,12 +29,6 @@ TString Cut = "TTbarPhotonAnalysis/";
 //TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
 TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
 
-// if(Cut == "TTbarDiLeptonAnalysis/"){
-// 	RefSelection = "Ref selection/";   //if use "TTbarDiLeptonAnalysis/"
-// }else{
-// 	RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
-// }
-
 TString Type = "Photons/";
 
 //TString Next = "AllPhotons/";
