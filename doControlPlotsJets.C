@@ -13,48 +13,38 @@
 #include "tdrstyle.C"
 #include "getSample.C"
 
-void doControlPlotsPhotons();
+void doControlPlotsJets();
 
 //stuff to choose
 bool logPlot = false; //true for log plot
 
 //choose object
-//TString Obj = "MuMu/";
-TString Obj = "EE/";
+TString Obj = "MuMu/";
+//TString Obj = "EE/";
 //TString Obj = "EMu/";
 
-TString Cut = "TTbarPhotonAnalysis/";
-//TString Cut = "TTbarDiLeptonAnalysis/";
+//TString Cut = "TTbarPhotonAnalysis/";
+TString Cut = "TTbarDiLeptonAnalysis/";
 
-//TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
-TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
+TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
+//TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
 
-TString Type = "Photons/";
+TString Type = "Jets/";
 
-//TString Next = "AllPhotons/";
-TString Next = "SignalPhotons/";
+TString Next = "";
 
 TString Systematic = "central/";
 
-//MuMu variables
-const int N = 16;
-
-int RebinFacts[N] = {20, 20, 5, 5, 2, 2, 5, 5, 25, 10, 1, 5, 1, 20, 20, 20}; //SignalPhotons PassesCutsUpToOnePhoton1Btag  
-//int RebinFacts[N] = {12, 11, 3, 3, 2, 2, 6, 6, 12, 16, 4, 4, 2}; //AllPhotons PassesCutsUpTo1Btag Muons
-//int RebinFacts[N] = {58, 40, 18, 18, 5, 5, 5, 5, 36, 50, 9, 8, 3}; //SignalPhotons PassesCutsUpTo1Btag Muons
-
-
+//Variables
+const int N = 3;
+int RebinFacts[N] = {5, 5, 1};
 TString Variable;
-TString Variables[N] = {"Photon_AbsEta_", "Photon_Eta_", "Photon_RhoCorrectedPFPhotonIso_barrel_", "Photon_RhoCorrectedPFPhotonIso_endcap_", "Photon_RhoCorrectedPFNeutralHadronIso_barrel_",
-"Photon_RhoCorrectedPFNeutralHadronIso_endcap_", "Photon_RhoCorrectedPFChargedHadronIso_barrel_", "Photon_RhoCorrectedPFChargedHadronIso_endcap_", "Photon_Pt_",
-"Photon_Phi_", "Photon_sigma_ietaieta_barrel_", "Photon_sigma_ietaieta_endcap_", "Photon_HtowoE_", "Photon_deltaR_electrons_", "Photon_deltaR_jets_", "Photon_deltaR_muons_"};
-double MinXs[N] = {0, -3 , 0 , 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, 0, 0};
-double MaxXs[N] = {3,  3 , 130, 130, 40, 40, 100, 100, 260, 4, 0.05, 0.1, 0.06, 5, 5, 5};
-TString XTitles[N] = {"#left|#eta#right|_{#gamma}", "#eta_{#gamma}", "RhoCorrPhotonIsobarrel", "RhoCorrPhotonIsoendcap", "RhoCorrNeutralHadronIsobarrel",
-"RhoCorrNeutralHadronIsoendcap", "RhoCorrChargedHadronIsobarrel", "RhoCorrChargedHadronIsoendcap", "p_{T}(#gamma) [GeV]",  "#phi_{#gamma}",  "#sigma i#etai#eta barrel",
-"#sigma i#etai#eta endcap",  "H/E", "#DeltaR(#gamma, e)", "#DeltaR(#gamma, jets)", "#DeltaR(#gamma, #mu)"};
+TString Variables[N] = {"all_jet_pT_", "all_jet_eta_", "N_Jets_"};
+double MinXs[N] = {0,   -2.6,  0};
+double MaxXs[N] = {300,  2.6, 10};
+TString XTitles[N] = {"Jet {p}_{T} [GeV]", "Jet #eta", "N Jets"};
 
-void doControlPlotsPhotons(){
+void doControlPlotsJets(){
 setTDRStyle();
 
 //loop over variables
@@ -66,9 +56,13 @@ TString Xtitle = XTitles[i];
 int RebinFact = RebinFacts[i];
 
 //Data
-//TH1D* data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-TH1D* data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-//TH1D* data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* data;
+if(Obj == "MuMu/")
+data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+if(Obj == "EE/")
+data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+if(Obj == "EMu/")
+data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
 //MC
 TH1D* ttgamma = getSample("TTGamma", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
@@ -85,7 +79,7 @@ TH1D* WZ = getSample("WZtoAnything",1, Obj, RefSelection, Type, Next, Variable, 
 //QCD
 TH1D* QCD_Pt_20_30_BCtoE = getSample("QCD_Pt_20_30_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* QCD_Pt_20_30_EMEnriched = getSample("QCD_Pt_20_30_EMEnriched",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-TH1D* QCD_Pt_20_MuEnrichedPt_15 = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+//TH1D* QCD_Pt_20_MuEnrichedPt_15 = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* QCD_Pt_30_80_BCtoE = getSample("QCD_Pt_30_80_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* QCD_Pt_30_80_EMEnriched = getSample("QCD_Pt_30_80_EMEnriched",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* QCD_Pt_80_170_BCtoE = getSample("QCD_Pt_80_170_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
@@ -219,7 +213,13 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
    ratio->GetXaxis()->SetTitle(Xtitle);ratio->GetXaxis()->SetTitleSize(0.15);
    ratio->Draw("ep");
 
-   TLine *line = new TLine(MinX,1,MaxX,1);
+   TLine *line;
+   if(MaxX <= 0.1){
+   line = new TLine(MinX,1,MaxX,1);
+   }else{
+   line = new TLine(MinX,1,MaxX-ratio->GetBinWidth(1),1);
+   }
+   
    line->Draw();
 
   TString plotName("plots/Control/"+ Obj + Cut  + Type + Next );
