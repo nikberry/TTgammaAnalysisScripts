@@ -42,7 +42,7 @@ TString Variable;
 TString Variables[N] = {"all_jet_pT_", "all_jet_eta_", "N_Jets_"};
 double MinXs[N] = {0,   -2.6,  0};
 double MaxXs[N] = {300,  2.6, 10};
-TString XTitles[N] = {"Jet {p}_{T}", "Jet #eta", "N Jets"};
+TString XTitles[N] = {"Jet {p}_{T} [GeV]", "Jet #eta", "N Jets"};
 
 void doControlPlotsJets(){
 setTDRStyle();

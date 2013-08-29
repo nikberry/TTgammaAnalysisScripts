@@ -42,7 +42,7 @@ TString Variable;
 TString Variables[N] = {"MET_", "DeltaPhi_lepton_MET_", "MET_phi_", "METsignificance_", "Transverse_Mass_"};
 double MinXs[N] = {0,   0,  -3.4, 0,   0};
 double MaxXs[N] = {300, 3.2, 3.4, 300, 300};
-TString XTitles[N] = {"#slash{E}_{T}", "#Delta#phi(l, MET)", "#phi(#slash{E}_{T})", "#slash{E}_{T} significance", "M_{T}(MET)"};
+TString XTitles[N] = {"#slash{E}_{T} [GeV]", "#Delta#phi(l, MET)", "#phi(#slash{E}_{T})", "#slash{E}_{T} significance", "M_{T}(MET) [GeV]"};
 
 void doControlPlotsMET(){
 setTDRStyle();
