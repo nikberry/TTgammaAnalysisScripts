@@ -36,9 +36,9 @@ TString Cut = "TTbarPhotonAnalysis/";
 //TString Cut = "TTbarDiLeptonAnalysis/";
 
 //choose variable
-TString Variable = "Photon_deltaR_electrons_";
+//TString Variable = "Photon_deltaR_electrons_";
 //TString Variable = "Photon_deltaR_muons_";
-//TString Variable = "Photon_deltaR_jets_";
+TString Variable = "Photon_deltaR_jets_";
 
 void SignificanceTestDeltaR(){
 

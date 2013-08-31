@@ -19,8 +19,8 @@ void doControlPlotsDiLeptons();
 bool logPlot = false; //true for log plot
 
 //choose object
-TString Obj = "MuMu/";
-//TString Obj = "EE/";
+//TString Obj = "MuMu/";
+TString Obj = "EE/";
 //TString Obj = "EMu/";
 
 //TString Cut = "TTbarPhotonAnalysis/";
