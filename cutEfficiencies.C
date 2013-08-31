@@ -19,9 +19,9 @@ void printCutEff(string step, int bin, TH1D* cutEff);
 
 void cutEfficiencies(){
 
-TFile* DoubleMu = new TFile("rootFiles/central/PassesCutsUpToOnePhoton1Btag/DoubleMu_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon.root"); //TFile::Open
-TFile* DoubleElectron = new TFile("rootFiles/central/PassesCutsUpToOnePhoton1Btag/DoubleElectron_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon.root");
-TFile* MuEG = new TFile("rootFiles/central/PassesCutsUpToOnePhoton1Btag/MuEG_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon.root");
+TFile* DoubleMu = new TFile("/data1/TTGammaAnalysis/HistogramFiles/Version3/central/DoubleMu_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon.root"); //TFile::Open
+TFile* DoubleElectron = new TFile("/data1/TTGammaAnalysis/HistogramFiles/Version3/central/DoubleElectron_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon.root");
+TFile* MuEG = new TFile("/data1/TTGammaAnalysis/HistogramFiles/Version3/central/MuEG_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon.root");
 
 	bool muon = true;
 	bool electron = true;
@@ -104,54 +104,54 @@ if(scale == true){
 weightHisto(tt, lumi, 157.5, 6920475);
 } */
 
- //draw histos to files
+ //draw histos to files = TTbarPhotonAnalysis
   TCanvas *c1 = new TCanvas("Cutflow MuMu","Cutflow #mu#mu",600, 500);
 	cutFlow_MuMu->Draw();
-	c1->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/MuMu/cutFlowMuMu.png");
+	c1->SaveAs("plots/Control/MuMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutFlowMuMu.png");
 
   TCanvas *c2 = new TCanvas("Cut Eff MuMu","Cutflow Efficiency #mu#mu",600, 500);
 	cutEff_MuMu->Draw();
-	c2->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/MuMu/cutEffMuMu.png");
+	c2->SaveAs("plots/Control/MuMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutEffMuMu.png");
 	
   TCanvas *c3 = new TCanvas("Cutflow MuMu Unweighted","Cutflow #mu#mu Unweighted",600, 500);
 	cutFlow_MuMu_unweighted->Draw();
-	c3->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/MuMu/cutFlowMuMuUnweighted.png");
+	c3->SaveAs("plots/Control/MuMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutFlowMuMuUnweighted.png");
 
   TCanvas *c4 = new TCanvas("Cut Eff MuMu Unweighted","Cutflow Efficiency #mu#mu Unweighted",600, 500);
 	cutEff_MuMu_unweighted->Draw();
-	c4->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/MuMu/cutEffMuMuUnweighted.png");
+	c4->SaveAs("plots/Control/MuMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutEffMuMuUnweighted.png");
 	
   TCanvas *c5 = new TCanvas("Cutflow EE","Cutflow $e^+e^-$",600, 500);
 	cutFlow_EE->Draw();
-	c5->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EE/cutFlowEE.png");
+	c5->SaveAs("plots/Control/EE/TTbarPhotonAnalysis/Photons/SignalPhotons/cutFlowEE.png");
 
   TCanvas *c6 = new TCanvas("Cut Eff EE","Cutflow Efficiency $e^+e^-$",600, 500);
 	cutEff_EE->Draw();
-	c6->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EE/cutEffEE.png");
+	c6->SaveAs("plots/Control/EE/TTbarPhotonAnalysis/Photons/SignalPhotons/cutEffEE.png");
 	
   TCanvas *c7 = new TCanvas("Cutflow EE Unweighted","Cutflow $e^+e^-$ Unweighted",600, 500);
 	cutFlow_EE_unweighted->Draw();
-	c7->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EE/cutFlowEEUnweighted.png");
+	c7->SaveAs("plots/Control/EE/TTbarPhotonAnalysis/Photons/SignalPhotons/cutFlowEEUnweighted.png");
 
   TCanvas *c8 = new TCanvas("Cut Eff EE Unweighted","Cutflow Efficiency $e^+e^-$ Unweighted",600, 500);
 	cutEff_EE_unweighted->Draw();
-	c8->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EE/cutEffEEUnweighted.png");	
+	c8->SaveAs("plots/Control/EE/TTbarPhotonAnalysis/Photons/SignalPhotons/cutEffEEUnweighted.png");	
 	
    TCanvas *c9 = new TCanvas("Cutflow EMu","Cutflow $e^{#pm}#mu^{#pm}$",600, 500);
 	cutFlow_EMu->Draw();
-	c9->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EMu/cutFlowEMu.png");
+	c9->SaveAs("plots/Control/EMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutFlowEMu.png");
 
   TCanvas *c10 = new TCanvas("Cut Eff EMu","Cutflow Efficiency $e^{#pm}#mu^{#pm}$",600, 500);
 	cutEff_EMu->Draw();
-	c10->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EMu/cutEffEMu.png");
+	c10->SaveAs("plots/Control/EMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutEffEMu.png");
 	
   TCanvas *c11 = new TCanvas("Cutflow EMu Unweighted","Cutflow $e^{#pm}#mu^{#pm}$ Unweighted",600, 500);
 	cutFlow_EMu_unweighted->Draw();
-	c11->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EMu/cutFlowEMuUnweighted.png");
+	c11->SaveAs("plots/Control/EMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutFlowEMuUnweighted.png");
 
   TCanvas *c12 = new TCanvas("Cut Eff EMu Unweighted","Cutflow Efficiency $e^{#pm}#mu^{#pm}$ Unweighted",600, 500);
 	cutEff_EMu_unweighted->Draw();
-	c12->SaveAs("plots/Control/PassesCutsUpToOnePhoton1Btag/Photons/SignalPhotons/EMu/cutEffEMuUnweighted.png");	
+	c12->SaveAs("plots/Control/EMu/TTbarPhotonAnalysis/Photons/SignalPhotons/cutEffEMuUnweighted.png");	
 
 
 
