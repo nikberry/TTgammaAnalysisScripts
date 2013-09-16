@@ -18,7 +18,7 @@ TText* doPrelim(float x, float y, TString Cut, TString Channel);
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable,int RebinFact, TString Systematic, TString Cut, TString Fake);
 
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable,int RebinFact, TString Systematic, TString Cut, TString Fake){
-	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version4/"+ Systematic;
+	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version5/"+ Systematic;
 	
 	if(Fake == "fake")
 	Next = "ttfake"+Next;
@@ -58,16 +58,18 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
 
 	TH1D* plot;
-	TH1D* plot1;
+	TH1D* plot0;
 	TH1D* plot2;
 	TH1D* plot3;
 	TH1D* plot4;
 
+	plot0 = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "0btag");
 	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
 	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
 	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
 	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
 
+	//plot->Add(plot0);
 	plot->Add(plot2);
 	plot->Add(plot3);	
 	plot->Add(plot4);
@@ -95,7 +97,7 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 }
 
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut){
-	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version4/"+ Systematic;
+	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version5/"+ Systematic;
 	
 	TString syst = "";
 	
@@ -126,17 +128,19 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	cout << "file: "<< dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
 	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
 
+	TH1D* plot0;
 	TH1D* plot;
-	TH1D* plot1;
 	TH1D* plot2;
 	TH1D* plot3;
 	TH1D* plot4;
-
+	
+	plot0 = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "0btag");
 	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
 	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
 	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
 	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
 
+	//plot->Add(plot0);
 	plot->Add(plot2);
 	plot->Add(plot3);	
 	plot->Add(plot4);
