@@ -16,7 +16,7 @@
 void doControlPlotsPhotons();
 
 //stuff to choose
-bool logPlot = false; //true for log plot
+bool logPlot = true; //true for log plot
 
 //inclusive top or fakes
 bool inclTop = true;
@@ -88,9 +88,13 @@ TString Xtitle = XTitles[i];
 int RebinFact = RebinFacts[i];
 
 //Data
-TH1D* data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-//TH1D* data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-//TH1D* data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* data;
+if(Obj == "MuMu/")
+data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+if(Obj == "EE/")
+data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+if(Obj == "EMu/")
+data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
 //MC
 TH1D* ttgamma = getSample("TTGamma", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);

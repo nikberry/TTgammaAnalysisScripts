@@ -18,6 +18,9 @@ void doControlPlotsMET();
 //stuff to choose
 bool logPlot = false; //true for log plot
 
+//inclusive top or fakes
+bool inclTop = true;
+
 //choose object
 //TString Obj = "MuMu/";
 //TString Obj = "EE/";
@@ -26,8 +29,7 @@ TString Obj = "EMu/";
 TString Cut = "TTbarPhotonAnalysis/";
 //TString Cut = "TTbarDiLeptonAnalysis/";
 
-//TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
-TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
+TString RefSelection = "Ref selection/";  
 
 TString Type = "MET/";
 
@@ -66,7 +68,21 @@ data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, 
 
 //MC
 TH1D* ttgamma = getSample("TTGamma", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-TH1D* tt = getSample("TTJet", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+
+//this to get all ttbar
+
+TH1D* tt;
+TH1D* tt_lep;
+TH1D* tt_sig;
+if(inclTop == false){
+//fake ttgamma
+tt = getSample("TTJet", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut, "fake");
+tt_lep = getSample("TTJet", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut, "lep");
+tt_sig = getSample("TTJet", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut, "sig");
+}else{
+tt = getSample("TTJet", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+}
+
 TH1D* wjets = getSample("WJetsToLNu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* DY1 = getSample("DYJetsToLL_M-10To50", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 TH1D* DY2 = getSample("DYJetsToLL_M-50", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
@@ -96,6 +112,12 @@ TH1D* QCD_all = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type
 
 TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
   allMC->Add(tt);
+  
+  if(inclTop == false){
+  allMC->Add(tt_lep);
+  allMC->Add(tt_sig);
+  }
+
   allMC->Add(wjets);
   allMC->Add(DY1);
   allMC->Add(DY2);
@@ -117,6 +139,12 @@ THStack *hs = new THStack("hs","test");
   hs->Add(T_tW); 
   hs->Add(Tbar_tW);
   hs->Add(tt); 
+
+  if(inclTop == false){
+  hs->Add(tt_lep);
+  hs->Add(tt_sig);
+  }
+
   hs->Add(ttgamma);
   
 
@@ -164,7 +192,14 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
 	tleg2->SetFillColor(10);
 	tleg2->AddEntry(data , "2012 data", "lpe");
 	tleg2->AddEntry(ttgamma , "t#bar{t}#gamma", "lf");
-	tleg2->AddEntry(tt , "t#bar{t}", "lf");
+
+	if(inclTop == false){
+        tleg2->AddEntry(tt_sig , "t#bar{t}#gamma (MG)", "lf");
+        tleg2->AddEntry(tt_lep , "t#bar{t} l #rightarrow #gamma (MG)", "lf");
+        tleg2->AddEntry(tt , "t#bar{t} fake (MG)", "lf");
+        }else{
+        tleg2->AddEntry(tt , "t#bar{t}", "lf");
+        }
 	tleg2->AddEntry(T_tW, "Single Top"      , "lf");
 //	tleg2->AddEntry(Tbar_tW, "anti-single-tW"      , "lf");	
 	tleg2->AddEntry(DY1 , "Z+Jets", "lf");
