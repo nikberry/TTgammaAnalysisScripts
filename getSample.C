@@ -15,10 +15,18 @@
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut);
 //TH1D* getQCD(TString Obj, TString Variable, int RebinFact);
 TText* doPrelim(float x, float y, TString Cut, TString Channel);
+TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable,int RebinFact, TString Systematic, TString Cut, TString Fake);
 
-
-TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut){
-	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version3/"+ Systematic;
+TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable,int RebinFact, TString Systematic, TString Cut, TString Fake){
+	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version5/"+ Systematic;
+	
+	if(Fake == "fake")
+	Next = "ttfake"+Next;
+	else if(Fake == "lep")
+	Next = "ttlep"+Next;
+	else if(Fake == "sig")
+	Next = "ttsig"+Next;
+	
 	
 	TString syst = "";
 	
@@ -50,16 +58,89 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
 
 	TH1D* plot;
-	TH1D* plot1;
+	TH1D* plot0;
 	TH1D* plot2;
 	TH1D* plot3;
 	TH1D* plot4;
 
+	plot0 = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "0btag");
 	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
 	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
 	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
 	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
 
+	//plot->Add(plot0);
+	plot->Add(plot2);
+	plot->Add(plot3);	
+	plot->Add(plot4);
+
+
+	
+        if(Fake == "fake"){
+	plot->SetFillColor(kRed+1);
+        plot->SetLineColor(kRed+1);
+	}else if(Fake == "lep"){
+	plot->SetFillColor(kRed+2);
+        plot->SetLineColor(kRed+2);
+	}else if(Fake == "sig"){
+	plot->SetFillColor(kRed+3);
+        plot->SetLineColor(kRed+3);
+	}
+	
+	plot->Rebin(RebinFact);
+	
+	plot->SetDirectory(gROOT);
+	file->Close();
+	
+	return plot;
+
+}
+
+TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut){
+	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version5/"+ Systematic;
+	
+	TString syst = "";
+	
+	if(Systematic == "BJet_down")
+		syst = "_minusBJet";
+	else if(Systematic == "BJet_up")
+		syst = "_plusBjet";
+	else if(Systematic == "JES_down")
+		syst = "_minusJES";
+	else if(Systematic == "JES_up")
+		syst = "_plusJES";
+	else if(Systematic == "LightJet_up")
+		syst = "_plusLightJet";	
+	else if(Systematic == "LightJet_down")
+		syst = "_minusLightJet";							
+	else if(Systematic == "PU_down")
+		syst = "_PU_65835mb";
+	else if(Systematic == "PU_up")
+		syst = "_PU_72765mb";
+	else if(Systematic == "central")
+		syst = "";	
+	//else	
+		//syst = "";
+		
+	TFile* file = new TFile(dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root");
+	//TDirectoryFile* folder = (TDirectoryFile*) file->Get("TTbarPlusMetAnalysis/QCD No Iso/Muon/");
+
+	cout << "file: "<< dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
+	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
+
+	TH1D* plot0;
+	TH1D* plot;
+	TH1D* plot2;
+	TH1D* plot3;
+	TH1D* plot4;
+	
+	plot0 = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "0btag");
+	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
+	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
+	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
+	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
+
+	//plot->Add(plot0);
 	plot->Add(plot2);
 	plot->Add(plot3);	
 	plot->Add(plot4);
