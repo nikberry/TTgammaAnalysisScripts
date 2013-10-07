@@ -55,21 +55,31 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	//TDirectoryFile* folder = (TDirectoryFile*) file->Get("TTbarPlusMetAnalysis/QCD No Iso/Muon/");
 
 	cout << "file: "<< dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
+	if( Cut == "EventCount/"){
+	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable << endl;
+	} 
+	else {
 	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
+	}
 
 	TH1D* plot;
-	TH1D* plot0;
 	TH1D* plot2;
 	TH1D* plot3;
 	TH1D* plot4;
 
-	plot0 = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "0btag");
+	if( Cut == "EventCount/"){
+	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	}
+	else {
 	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
 	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
 	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
 	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
-
-	//plot->Add(plot0);
+	}
+	
 	plot->Add(plot2);
 	plot->Add(plot3);	
 	plot->Add(plot4);
@@ -128,19 +138,24 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	cout << "file: "<< dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
 	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
 
-	TH1D* plot0;
 	TH1D* plot;
 	TH1D* plot2;
 	TH1D* plot3;
 	TH1D* plot4;
 	
-	plot0 = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "0btag");
+	if( Cut == "EventCount/"){
+	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+	}
+	else {
 	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
 	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
 	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
 	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
+	}
 
-	//plot->Add(plot0);
 	plot->Add(plot2);
 	plot->Add(plot3);	
 	plot->Add(plot4);
