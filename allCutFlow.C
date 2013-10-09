@@ -12,87 +12,133 @@
 #include <sstream>
 #include <iomanip>
 #include "tdrstyle.C"
+#include "getSample.C"
 
 using namespace std;
 
 void allCutFlow();
-TH1D* getSample(TString sample, double weight, TString Variable);
-TText* doPrelim(float x, float y, TString Channel);
-
+TText* dostuff(float x, float y, TString Channel);
 
 void allCutFlow(){
+setTDRStyle();
+gROOT->SetBatch();
 
-double lumi = 5800;
 //stuff to choose
 bool logPlot = true; //true for log plot
 
+//choose object
+// bool MuMu = true;
+// bool EE = false;
+// bool EMu = false;
 
-// number of btags
-TString Nbtags = "";  //standard  "2btags" , qcd "0btag"
+TString Cut = "EventCount/";
 
-//muon variables
+TString Nbtags = "";
+TString Obj = "";
+TString RefSelection = "";
+TString Type = "";
+TString Next = "";
+int RebinFact = 1;
+
+TString Systematic = "central/";
 
 //TString Variable = "TTbarMuMuRefSelection";   //"TTbarMuMuRefSelectionUnweighted"
-//TString Variable = "TTbarEERefSelection";    
+//TString Variable = "TTbarEERefSelection";  
+TString Variable = "TTbarEMuRefSelection"; 
+ 
+TString Xtitle = "Cuts";
+
+//if( Variable == "TTbarMuMuRefSelection" || Variable == "TTbarEERefSelection" )
 //TString step[10] = {"Skim" ,"Cleaning and HLT","Di-lepton Sel", "m(Z) veto", "#geq 1 jet", "#geq 2 jets", "#slash{E_{T}} cut", "#geq1 CSV b-tag", "#geq1 Good Photon" , "1 Good Photon"};
 //TString step_latex[10] = {"Skim" ,"Cleaning and HLT","Di-lepton Sel", "m(Z) veto", "$\\geq$ 1 jets", "$\\geq$ 2 jets", "$\\slash{E_{T}}$ cut", "$\\geq$ 1 CSV b-tag", "$\\geq$ 1 Good Photon" , "1 Good Photon"};
-
-//Emu probs best to put 2 cuts back in but no make them
-TString Variable = "TTbarEMuRefSelection";
+//if( Variable == "TTbarEMuRefSelection" )
 TString step[8] = {"Skim" ,"Cleaning and HLT","Di-lepton Sel", "#geq 1 jets", "#geq 2 jets", "#geq1 CSV b-tag", "#geq1 Good Photon", "1 Good Photon" };		
 TString step_latex[8] = {"Skim" ,"Cleaning and HLT","Di-lepton Sel", "$\\geq$ 1 jets", "$\\geq$ 2 jets", "$\\geq$ 1 CSV b-tag", "$\\geq$ 1 Good Photon" , "1 Good Photon"};
 
 
-setTDRStyle();
-
-TString Xtitle = "Cuts";
-
 //Data
-TH1D* data;
-if(Variable == "TTbarMuMuRefSelection")
-data = getSample("DoubleMu", 1, Variable);
-if(Variable == "TTbarEERefSelection")
-data = getSample("DoubleElectron", 1, Variable);
-if(Variable == "TTbarEMuRefSelection")
-data = getSample("MuEG", 1, Variable);
+if( Variable == "TTbarMuMuRefSelection" )
+TH1D* data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+if( Variable == "TTbarEERefSelection" )
+TH1D* data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+if( Variable == "TTbarEMuRefSelection" )
+TH1D* data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
 //MC
-TH1D* tt = getSample("TTJet", lumi*225.2/6920475, Variable);
-TH1D* tt_gamma = getSample("TTGamma", lumi*225.2/6920475, Variable);
-TH1D* wjets = getSample("WJetsToLNu", lumi*5400.0/23140779, Variable);
-TH1D* zjets = getSample("DYJetsToLL", lumi*5745.25/30457954, Variable);
-TH1D* qcd = getSample("QCD_All",     lumi*34679.3/8500505, Variable);
-TH1D* single_t = getSample("SingleTop", lumi*56.4/3757707, Variable);
-TH1D* diboson = getSample("DiBoson", lumi*56.4/3757707, Variable);
+TH1D* ttgamma = getSample("TTGamma", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* tt = getSample("TTJet", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* wjets = getSample("WJetsToLNu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* DY1 = getSample("DYJetsToLL_M-10To50", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* DY2 = getSample("DYJetsToLL_M-50", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* T_tW = getSample("T_tW-channel", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* Tbar_tW = getSample("Tbar_tW-channel",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* ZZ = getSample("ZZtoAnything",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* WW = getSample("WWtoAnything",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* WZ = getSample("WZtoAnything",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
+//QCD
+TH1D* QCD_Pt_20_30_BCtoE = getSample("QCD_Pt_20_30_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* QCD_Pt_20_30_EMEnriched = getSample("QCD_Pt_20_30_EMEnriched",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* QCD_Pt_20_MuEnrichedPt_15 = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* QCD_Pt_30_80_BCtoE = getSample("QCD_Pt_30_80_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* QCD_Pt_30_80_EMEnriched = getSample("QCD_Pt_30_80_EMEnriched",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* QCD_Pt_80_170_BCtoE = getSample("QCD_Pt_80_170_BCtoE",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+TH1D* QCD_Pt_80_170_EMEnriched = getSample("QCD_Pt_80_170_EMEnriched",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+
+TH1D* QCD_all = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+  QCD_all->Add(QCD_Pt_20_30_BCtoE);
+  QCD_all->Add(QCD_Pt_20_30_EMEnriched);
+  QCD_all->Add(QCD_Pt_30_80_BCtoE);
+  QCD_all->Add(QCD_Pt_30_80_EMEnriched);
+  QCD_all->Add(QCD_Pt_80_170_BCtoE);
+  QCD_all->Add(QCD_Pt_80_170_EMEnriched);
+  
+TH1D* DY = getSample("DYJetsToLL_M-10To50", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+  DY->Add(DY2);
+  
+TH1D* Diboson = getSample("ZZtoAnything",1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+  Diboson->Add(WW);
+  Diboson->Add(WZ);
+  
+TH1D* SingleTop = getSample("T_tW-channel", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
+  SingleTop->Add(Tbar_tW); 
+ 
 cout << "got samples" << endl;
 
 THStack *hs = new THStack("hs","test");
 
-  hs->Add(qcd);
-  hs->Add(diboson);  
-  hs->Add(zjets);
+  hs->Add(QCD_all);
   hs->Add(wjets);
-  hs->Add(single_t);
+  hs->Add(WZ); 
+  hs->Add(WW);
+  hs->Add(ZZ);
+  hs->Add(DY1);
+  hs->Add(DY2);
+  hs->Add(T_tW); 
+  hs->Add(Tbar_tW);
   hs->Add(tt);
-  hs->Add(tt_gamma);
+  hs->Add(ttgamma);
   
 
-TH1D * allMC = (TH1D*) tt->Clone("all");
-allMC->Add(tt_gamma);
-allMC->Add(wjets);
-allMC->Add(zjets);
-allMC->Add(single_t);
-allMC->Add(diboson);
-allMC->Add(qcd);
-
+TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
+  allMC->Add(tt);
+  allMC->Add(wjets);
+  allMC->Add(DY1);
+  allMC->Add(DY2);
+  allMC->Add(T_tW);
+  allMC->Add(Tbar_tW);
+  allMC->Add(ZZ);
+  allMC->Add(WW);
+  allMC->Add(WZ);
+  allMC->Add(QCD_all);
+  
 TH1D* dataEff = new TH1D("data eff","data eff",9,0,9);
 TH1D* mcEff = new TH1D("mc eff","mc eff",9,0,9);
 
 mcEff->Sumw2();
 dataEff->Sumw2();
 
-for(int q =1; q<tt->GetNbinsX(); q++){
+for(int q =1; q<ttgamma->GetNbinsX(); q++){
 mcEff->GetXaxis()->SetBinLabel(q, step[q]);
 dataEff->SetBinContent(q, data->GetBinContent(q+1)/data->GetBinContent(q));
 dataEff->SetBinError(q, dataEff->GetBinContent(q)*sqrt(pow(data->GetBinError(q+1)/data->GetBinContent(q+1),2)+pow(data->GetBinError(q)/data->GetBinContent(q),2)));
@@ -131,7 +177,7 @@ mcEff->SetBinContent(q, allMC->GetBinContent(q+1)/allMC->GetBinContent(q));
 
   hs->Draw("hist");
   
-  for(int q =0; q<tt->GetNbinsX(); q++)
+  for(int q =0; q<ttgamma->GetNbinsX(); q++)
   hs->GetXaxis()->SetBinLabel(q+1, step[q]);
   
   data->Draw("E same");
@@ -148,20 +194,20 @@ mcEff->SetBinContent(q, allMC->GetBinContent(q+1)/allMC->GetBinContent(q));
 	tleg2->SetBorderSize(0);
 	tleg2->SetFillColor(10);
 	tleg2->AddEntry(data , "2012 data", "lpe");
-	tleg2->AddEntry(tt_gamma , "t#bar{t}+gamma", "lf");
+	tleg2->AddEntry(ttgamma , "t#bar{t}+gamma", "lf");
 	tleg2->AddEntry(tt , "t#bar{t}", "lf");
-	tleg2->AddEntry(single_t, "single top", "lf");
+	tleg2->AddEntry(T_tW, "single top", "lf");
+	tleg2->AddEntry(DY1 , "Drell-Yan", "lf");
+	tleg2->AddEntry(ZZ , "Di-boson", "lf");
 	tleg2->AddEntry(wjets , "w+jets", "lf");
-	tleg2->AddEntry(zjets , "z+jets", "lf");
-	tleg2->AddEntry(diboson , "diboson", "lf");
-	tleg2->AddEntry(qcd , "QCD", "lf");
+	tleg2->AddEntry(QCD_all , "QCD", "lf");
 	
 	//tleg2->AddEntry(singtEff, "single-t"      , "l");
 	//tleg2->AddEntry(singtwEff, "single-tW"      , "l");
  	tleg2->Draw("same");	
 	
-	TText* textPrelim = doPrelim(0.22,0.96, Variable);
-	textPrelim->Draw();
+	TText* textstuff = dostuff(0.22,0.96, Variable);
+	textstuff->Draw();
 	
   if(logPlot ==true){
   c1->SetLogy();
@@ -190,68 +236,26 @@ mcEff->SetBinContent(q, allMC->GetBinContent(q+1)/allMC->GetBinContent(q));
 
  cout << "& ttgamma & ttbar & single-t  & wjets & zjets & diboson & qcd & all MC & data  \\\\" << endl; 
  
- for(int q = 0; q < tt->GetNbinsX(); q++){
- cout << step_latex[q] << " & " << tt_gamma->GetBinContent(q+1) << " $\\pm$ " << tt_gamma->GetBinError(q+1)  << " & " <<
- tt->GetBinContent(q+1) << " $\\pm$ " << tt->GetBinError(q+1)  << " & " << wjets->GetBinContent(q+1) << " $\\pm$ " <<
- wjets->GetBinError(q+1)  << " & " << zjets->GetBinContent(q+1) << " $\\pm$ " << zjets->GetBinError(q+1)  << " & " <<
- diboson->GetBinContent(q+1) << " $\\pm$ " << diboson->GetBinError(q+1)  << " & "<< single_t->GetBinContent(q+1) << " $\\pm$ "
- << single_t->GetBinError(q+1)  << " & " << qcd->GetBinContent(q+1) << " $\\pm$ " << qcd->GetBinError(q+1)  << " & " <<
+ for(int q = 0; q < ttgamma->GetNbinsX(); q++){
+ cout << step_latex[q] << " & " << ttgamma->GetBinContent(q+1) << " $\\pm$ " << ttgamma->GetBinError(q+1)  << " & " <<
+ tt->GetBinContent(q+1) << " $\\pm$ " << tt->GetBinError(q+1)  << " & " << SingleTop->GetBinContent(q+1) << " $\\pm$ " <<
+ SingleTop->GetBinError(q+1)  << " & " << DY->GetBinContent(q+1) << " $\\pm$ " << DY->GetBinError(q+1)  << " & " <<
+ Diboson->GetBinContent(q+1) << " $\\pm$ " << Diboson->GetBinError(q+1)  << " & "<< wjets->GetBinContent(q+1) << " $\\pm$ "
+ << wjets->GetBinError(q+1)  << " & " << QCD_all->GetBinContent(q+1) << " $\\pm$ " << QCD_all->GetBinError(q+1)  << " & " <<
  allMC->GetBinContent(q+1) << " $\\pm$ " << allMC->GetBinError(q+1)  << " & " << data->GetBinContent(q+1) << " $\\pm$ " <<
  data->GetBinError(q+1) << " \\\\ " << endl;
  
  }
-
   	
 }
-
-
-TH1D* getSample(TString sample, double weight,TString Variable){
-	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version3/central/";
-	TFile* file = new TFile(dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon.root");
-	//TDirectoryFile* folder = (TDirectoryFile*) file->Get("TTbarPlusMetAnalysis/QCD No Iso/Muon/");
-	
-	TH1D* plot = (TH1D*) file->Get("EventCount/"+Variable);
-
-        if(sample == "TTJet"){
-	plot->SetFillColor(kRed+1);
-        plot->SetLineColor(kRed+1);
-	}else if(sample == "WJetsToLNu"){
-	plot->SetLineColor(kGreen-3);	  
-  	plot->SetFillColor(kGreen-3);
-	}else if(sample == "DYJetsToLL"){
-	plot->SetFillColor(kAzure-2);
-	plot->SetLineColor(kAzure-2);
-	}else if(sample == "QCD_All"){ 
-	plot->SetLineColor(kYellow);
-	plot->SetFillColor(kYellow);
-	}else if(sample == "SingleTop"){
-	plot->SetFillColor(kMagenta);
-	plot->SetLineColor(kMagenta);
-	}else if(sample == "DiBoson"){
-	plot->SetFillColor(kGreen);
-	plot->SetLineColor(kGreen);
-	}else if(sample == "TTGamma"){
-	plot->SetFillColor(kAzure+8);
-	plot->SetLineColor(kAzure+8);
-	}
-	
-	if(sample != "SingleMu")
-	plot->Scale(19.605/19.584);
-	//plot->Scale(weight);
-	
-	
-	return plot;
-
-}
-
-TText* doPrelim(float x, float y, TString Channel)
+TText* dostuff(float x, float y, TString Channel)
 {
 
   std::ostringstream stream;
 
   if(Channel == "TTbarMuMuRefSelection" || Channel == "TTbarMuMuRefSelectionUnweighted"){
   	stream << "#mu#mu                              CMS Preliminary, L = 19.6 fb^{-1}";
-  }else if(Channel == "EE/"){
+  }else if(Channel == "TTbarEERefSelection"){
   	stream << "ee                              CMS Preliminary, L = 19.6 fb^{-1}";
   }else{
   	stream << "e#mu                              CMS Preliminary, L = 19.6 fb^{-1}";
@@ -267,3 +271,4 @@ TText* doPrelim(float x, float y, TString Channel)
 
   return text;
 }
+

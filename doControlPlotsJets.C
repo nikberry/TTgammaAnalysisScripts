@@ -18,13 +18,16 @@ void doControlPlotsJets();
 //stuff to choose
 bool logPlot = false; //true for log plot
 
-//choose object
-//TString Obj = "MuMu/";
-//TString Obj = "EE/";
-TString Obj = "EMu/";
+//inclusive top or fakes
+bool inclTop = true;
 
-//TString Cut = "TTbarPhotonAnalysis/";
-TString Cut = "TTbarDiLeptonAnalysis/";
+//choose object
+TString Obj = "MuMu/";
+//TString Obj = "EE/";
+//TString Obj = "EMu/";
+
+TString Cut = "TTbarPhotonAnalysis/";
+//TString Cut = "TTbarDiLeptonAnalysis/";
 
 TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
 //TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
@@ -37,7 +40,8 @@ TString Systematic = "central/";
 
 //Variables
 const int N = 3;
-int RebinFacts[N] = {5, 5, 1};
+//int RebinFacts[N] = {5, 5, 1};
+int RebinFacts[N] = {10, 10, 1};
 TString Variable;
 TString Variables[N] = {"all_jet_pT_", "all_jet_eta_", "N_Jets_"};
 double MinXs[N] = {0,   -2.6,  0};
@@ -46,6 +50,8 @@ TString XTitles[N] = {"Jet {p}_{T} [GeV]", "Jet #eta", "N Jets"};
 
 void doControlPlotsJets(){
 setTDRStyle();
+gROOT->SetBatch();
+gStyle->SetErrorX(0.5);
 
 //loop over variables
 for(int i = 0; i<N; i++){
@@ -96,6 +102,12 @@ TH1D* QCD_all = getSample("QCD_Pt_20_MuEnrichedPt_15",1, Obj, RefSelection, Type
 
 TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
   allMC->Add(tt);
+  
+  if(inclTop == false){
+  allMC->Add(tt_lep);
+  allMC->Add(tt_sig);
+  }
+  
   allMC->Add(wjets);
   allMC->Add(DY1);
   allMC->Add(DY2);
@@ -105,6 +117,11 @@ TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
   allMC->Add(WW);
   allMC->Add(WZ);
   allMC->Add(QCD_all);
+  
+  allMC->SetFillColor(kBlack);
+  allMC->SetFillStyle(3354);
+  allMC->SetMarkerSize(0.);
+  allMC->SetStats(0);
 
 THStack *hs = new THStack("hs","test");
   hs->Add(QCD_all);
@@ -117,6 +134,11 @@ THStack *hs = new THStack("hs","test");
   hs->Add(T_tW); 
   hs->Add(Tbar_tW);
   hs->Add(tt); 
+  
+  if(inclTop == false){
+  hs->Add(tt_lep);
+  hs->Add(tt_sig);
+  } 
   hs->Add(ttgamma);
   
 
@@ -146,6 +168,7 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
   data->SetAxisRange(MinX, MaxX, "X");
 
   hs->Draw("hist");
+  allMC->Draw("same e2");
 	
   hs->SetMaximum(data->GetBinContent(data->GetMaximumBin())*1.3);
 
@@ -198,6 +221,9 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
    ratio->Divide(allMC);
    ratio->SetMinimum(0);
    ratio->SetMaximum(2);
+   ratio->SetFillColor(kBlack);
+   ratio->SetFillStyle(3354);
+   ratio->SetMarkerSize(0.);
 
    cout << "width: " << ratio->GetBinWidth(1) << std::endl;
    
