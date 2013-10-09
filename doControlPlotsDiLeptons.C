@@ -27,7 +27,6 @@ TString Obj = "EE/";
 TString Cut = "TTbarDiLeptonAnalysis/";
 
 TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
-//TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
 
 TString Type = "DiMuon/";  //change to "DiLepton/"
 

@@ -26,8 +26,8 @@ bool inclTop = true;
 //TString Obj = "EE/";
 TString Obj = "EMu/";
 
-TString Cut = "TTbarPhotonAnalysis/";
-//TString Cut = "TTbarDiLeptonAnalysis/";
+//TString Cut = "TTbarPhotonAnalysis/";
+TString Cut = "TTbarDiLeptonAnalysis/";
 
 TString RefSelection = "Ref selection/";  
 
@@ -37,9 +37,11 @@ TString Next = "patType1CorrectedPFMet/";
 
 TString Systematic = "central/";
 
-//Variables
 const int N = 5;
-int RebinFacts[N] = {1, 10, 2, 10, 10};
+int RebinFacts[N] = {1, 10, 2, 10, 10}; //Pre photon requirement
+//int RebinFacts[N] = {4, 24, 2, 10, 18}; //Post photon requirement
+
+//Variables
 TString Variable;
 TString Variables[N] = {"MET_", "DeltaPhi_lepton_MET_", "MET_phi_", "METsignificance_", "Transverse_Mass_"};
 double MinXs[N] = {0,   0,  -3.4, 0,   0};
@@ -48,6 +50,8 @@ TString XTitles[N] = {"#slash{E}_{T} [GeV]", "#Delta#phi(l, MET)", "#phi(#slash{
 
 void doControlPlotsMET(){
 setTDRStyle();
+gROOT->SetBatch();
+gStyle->SetErrorX(0.5);
 
 //loop over variables
 for(int i = 0; i<N; i++){
@@ -127,6 +131,11 @@ TH1D* allMC = (TH1D*)ttgamma->Clone("ratio");
   allMC->Add(WW);
   allMC->Add(WZ);
   allMC->Add(QCD_all);
+  
+  allMC->SetFillColor(kBlack);
+  allMC->SetFillStyle(3354);
+  allMC->SetMarkerSize(0.);
+  allMC->SetStats(0);
 
 THStack *hs = new THStack("hs","test");
   hs->Add(QCD_all);
@@ -170,10 +179,11 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
   pad1->Draw();
   pad1->cd();	  
 
-  data->Draw();
+  data->Draw("e x0");
   data->SetAxisRange(MinX, MaxX, "X");
 
   hs->Draw("hist");
+  allMC->Draw("same e2");
 	
   hs->SetMaximum(data->GetBinContent(data->GetMaximumBin())*1.3);
 
@@ -233,6 +243,9 @@ std::cout << "QCD: " << QCD_all->Integral() << std::endl;
    ratio->Divide(allMC);
    ratio->SetMinimum(0);
    ratio->SetMaximum(2);
+   ratio->SetFillColor(kBlack);
+   ratio->SetFillStyle(3354);
+   ratio->SetMarkerSize(0.);
 
    cout << "width: " << ratio->GetBinWidth(1) << std::endl;
    
