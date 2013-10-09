@@ -24,7 +24,7 @@ setTDRStyle();
 gROOT->SetBatch();
 
 //stuff to choose
-bool logPlot = true; //true for log plot
+bool logPlot = false; //true for log plot
 
 //choose object
 // bool MuMu = true;
