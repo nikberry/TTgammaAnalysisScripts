@@ -16,26 +16,26 @@
 void doControlPlotsPhotons();
 
 //stuff to choose
-bool logPlot = false; //true for log plot
+bool logPlot = true; //true for log plot
 
 //inclusive top or fakes
 bool inclTop = true;
 
 //choose object
-TString Obj = "MuMu/";
+//TString Obj = "MuMu/";
 //TString Obj = "EE/";
-//TString Obj = "EMu/";
+TString Obj = "EMu/";
 
-//TString Cut = "TTbarPhotonAnalysis/";
-TString Cut = "TTbarDiLeptonAnalysis/";
+TString Cut = "TTbarPhotonAnalysis/";
+//TString Cut = "TTbarDiLeptonAnalysis/";
 
 TString RefSelection = "Ref selection/";  
 
 TString Type = "Photons/";
 
 //TString Next = "AllPhotons/";
-//TString Next = "SignalPhotons/";
-TString Next = "NminusOnePhotons/";
+TString Next = "SignalPhotons/";
+//TString Next = "NminusOnePhotons/";
 
 TString Systematic = "central/";
 
