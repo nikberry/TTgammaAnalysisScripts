@@ -24,7 +24,7 @@ setTDRStyle();
 gROOT->SetBatch();
 
 //stuff to choose
-bool logPlot = false; //true for log plot
+bool logPlot = true; //true for log plot
 
 //choose object
 // bool MuMu = true;
@@ -246,6 +246,10 @@ mcEff->SetBinContent(q, allMC->GetBinContent(q+1)/allMC->GetBinContent(q));
  data->GetBinError(q+1) << " \\\\ " << endl;
  
  }
+
+// for(int r = 0; r < ttgamma->GetNbinsX(); r++){
+// std::cout << ttgamma->GetBinContent(r+1) << std::endl;
+// }
   	
 }
 TText* dostuff(float x, float y, TString Channel)

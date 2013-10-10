@@ -145,21 +145,19 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	
 	if( Cut == "EventCount/"){
 	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
-	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
-	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
-	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable);
+
 	}
 	else {
 	plot = (TH1D*)  file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "1btag");
 	plot2 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "2btags");
 	plot3 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "3btags");
 	plot4 = (TH1D*) file->Get(Cut + Obj + RefSelection + Type + Next + Variable + "4orMoreBtags");
-	}
-
+	
 	plot->Add(plot2);
 	plot->Add(plot3);	
 	plot->Add(plot4);
 
+	}
 
 	if(sample == "TTGamma"){
 	plot->SetFillColor(kAzure+8);
