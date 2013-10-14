@@ -26,11 +26,6 @@ gROOT->SetBatch();
 //stuff to choose
 bool logPlot = true; //true for log plot
 
-//choose object
-// bool MuMu = true;
-// bool EE = false;
-// bool EMu = false;
-
 TString Cut = "EventCount/";
 
 TString Nbtags = "";
@@ -42,9 +37,13 @@ int RebinFact = 1;
 
 TString Systematic = "central/";
 
-//TString Variable = "TTbarMuMuRefSelection";   //"TTbarMuMuRefSelectionUnweighted"
+//TString Variable = "TTbarMuMuRefSelection"; 
+//TString Variable = "TTbarMuMuRefSelectionUnweighted";
 //TString Variable = "TTbarEERefSelection";  
+//TString Variable = "TTbarEERefSelectionUnweighted";
 TString Variable = "TTbarEMuRefSelection"; 
+//TString Variable = "TTbarEMuRefSelectionUnweighted";
+
  
 TString Xtitle = "Cuts";
 
@@ -57,11 +56,11 @@ TString step_latex[8] = {"Skim" ,"Cleaning and HLT","Di-lepton Sel", "$\\geq$ 1 
 
 
 //Data
-if( Variable == "TTbarMuMuRefSelection" )
+if( Variable == "TTbarMuMuRefSelection" || Variable == "TTbarMuMuRefSelectionUnweighted" )
 TH1D* data = getSample("DoubleMu", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-if( Variable == "TTbarEERefSelection" )
+if( Variable == "TTbarEERefSelection" || Variable == "TTbarEERefSelectionUnweighted" )
 TH1D* data = getSample("DoubleElectron", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
-if( Variable == "TTbarEMuRefSelection" )
+if( Variable == "TTbarEMuRefSelection" || Variable == "TTbarEMuRefSelectionUnweighted" )
 TH1D* data = getSample("MuEG", 1, Obj, RefSelection, Type, Next, Variable, RebinFact, Systematic, Cut);
 
 //MC
@@ -259,7 +258,7 @@ TText* dostuff(float x, float y, TString Channel)
 
   if(Channel == "TTbarMuMuRefSelection" || Channel == "TTbarMuMuRefSelectionUnweighted"){
   	stream << "#mu#mu                              CMS Preliminary, L = 19.6 fb^{-1}";
-  }else if(Channel == "TTbarEERefSelection"){
+  }else if(Channel == "TTbarEERefSelection" || Channel == "TTbarEERefSelectionUnweighted"){
   	stream << "ee                              CMS Preliminary, L = 19.6 fb^{-1}";
   }else{
   	stream << "e#mu                              CMS Preliminary, L = 19.6 fb^{-1}";
