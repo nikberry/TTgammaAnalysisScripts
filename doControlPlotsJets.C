@@ -22,15 +22,14 @@ bool logPlot = false; //true for log plot
 bool inclTop = true;
 
 //choose object
-TString Obj = "MuMu/";
+//TString Obj = "MuMu/";
 //TString Obj = "EE/";
-//TString Obj = "EMu/";
+TString Obj = "EMu/";
 
-TString Cut = "TTbarPhotonAnalysis/";
-//TString Cut = "TTbarDiLeptonAnalysis/";
+TString Cut = "TTbarDiLeptonAnalysis/";
+//TString Cut = "TTbarPhotonAnalysis/";
 
 TString RefSelection = "Ref selection/";  //if use "TTbarDiLeptonAnalysis/"
-//TString  RefSelection = "One Photon/";    //if use "TTbarPhotonAnalysis/";
 
 TString Type = "Jets/";
 
@@ -40,8 +39,8 @@ TString Systematic = "central/";
 
 //Variables
 const int N = 3;
-//int RebinFacts[N] = {5, 5, 1};
-int RebinFacts[N] = {10, 10, 1};
+int RebinFacts[N] = {5, 5, 1}; //Pre-photon requirement
+//int RebinFacts[N] = {10, 10, 1}; //Post=photon requirement
 TString Variable;
 TString Variables[N] = {"all_jet_pT_", "all_jet_eta_", "N_Jets_"};
 double MinXs[N] = {0,   -2.6,  0};

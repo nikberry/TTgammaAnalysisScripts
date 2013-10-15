@@ -16,7 +16,7 @@
 void doControlPlotsPhotons();
 
 //stuff to choose
-bool logPlot = true; //true for log plot
+bool logPlot = false; //true for log plot
 
 //inclusive top or fakes
 bool inclTop = true;
@@ -26,49 +26,49 @@ bool inclTop = true;
 //TString Obj = "EE/";
 TString Obj = "EMu/";
 
-TString Cut = "TTbarPhotonAnalysis/";
-//TString Cut = "TTbarDiLeptonAnalysis/";
+//TString Cut = "TTbarPhotonAnalysis/";
+TString Cut = "TTbarDiLeptonAnalysis/";
 
 TString RefSelection = "Ref selection/";  
 
 TString Type = "Photons/";
 
 //TString Next = "AllPhotons/";
-TString Next = "SignalPhotons/";
-//TString Next = "NminusOnePhotons/";
+//TString Next = "SignalPhotons/";
+TString Next = "NminusOnePhotons/";
 
 TString Systematic = "central/";
 
 //MuMu variables
 const int N = 16;
 
-//int RebinFacts[N] = {20, 20, 5, 5, 2, 2, 5, 5, 25, 10, 1, 5, 1, 20, 20, 20}; //AllPhotons PassesCutsUpToOnePhoton1Btag  
-int RebinFacts[N] = {25, 22, 30, 30, 30, 30, 28, 28, 11, 10, 3, 22, 20, 20, 20, 38}; //SignalPhotons
-
-TString Variable;
-TString Variables[N] = {"Photon_AbsEta_", "Photon_Eta_", "Photon_RhoCorrectedPFPhotonIso_barrel_", "Photon_RhoCorrectedPFPhotonIso_endcap_", "Photon_RhoCorrectedPFNeutralHadronIso_barrel_",
-"Photon_RhoCorrectedPFNeutralHadronIso_endcap_", "Photon_RhoCorrectedPFChargedHadronIso_barrel_", "Photon_RhoCorrectedPFChargedHadronIso_endcap_", "Photon_Pt_",
-"Photon_Phi_", "Photon_sigma_ietaieta_barrel_", "Photon_sigma_ietaieta_endcap_", "Photon_HtowoE_", "Photon_deltaR_electrons_", "Photon_deltaR_jets_", "Photon_deltaR_muons_"};
-double MinXs[N] = {0, -3 , 0 , 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, 0, 0};
-double MaxXs[N] = {3,  3 , 130, 130, 40, 40, 100, 100, 260, 4, 0.05, 0.1, 0.06, 5, 5, 5};
-TString XTitles[N] = {"#left|#eta#right|_{#gamma}", "#eta_{#gamma}", "RhoCorrPhotonIsobarrel", "RhoCorrPhotonIsoendcap", "RhoCorrNeutralHadronIsobarrel",
-"RhoCorrNeutralHadronIsoendcap", "RhoCorrChargedHadronIsobarrel", "RhoCorrChargedHadronIsoendcap", "p_{T}(#gamma) [GeV]",  "#phi_{#gamma}",  "#sigma i#etai#eta barrel",
-"#sigma i#etai#eta endcap",  "H/E", "#DeltaR(#gamma, e)", "#DeltaR(#gamma, jets)", "#DeltaR(#gamma, #mu)"};
-
-// //MuMu variables
-// const int N = 14;
-// int RebinFacts[N] = {25, 22, 30, 30, 30, 30, 28, 28, 11, 3, 22, 20, 20, 38}; // NminusOne
+// //int RebinFacts[N] = {20, 20, 5, 5, 2, 2, 5, 5, 25, 10, 1, 5, 1, 20, 20, 20}; //AllPhotons 
+// int RebinFacts[N] = {25, 22, 30, 30, 30, 30, 28, 28, 11, 10, 3, 22, 20, 20, 20, 38}; //SignalPhotons
 // 
-// //Variables
 // TString Variable;
-// TString Variables[N] = {"Photon_AbsEta_", "Photon_Eta_", "Photon_RhoCorrectedPFPhotonIso_barrel_",  "Photon_RhoCorrectedPFPhotonIso_endcap_", "Photon_RhoCorrectedPFNeutralHadronIso_barrel_",
+// TString Variables[N] = {"Photon_AbsEta_", "Photon_Eta_", "Photon_RhoCorrectedPFPhotonIso_barrel_", "Photon_RhoCorrectedPFPhotonIso_endcap_", "Photon_RhoCorrectedPFNeutralHadronIso_barrel_",
 // "Photon_RhoCorrectedPFNeutralHadronIso_endcap_", "Photon_RhoCorrectedPFChargedHadronIso_barrel_", "Photon_RhoCorrectedPFChargedHadronIso_endcap_", "Photon_Pt_",
-//  "Photon_sigma_ietaieta_barrel_", "Photon_sigma_ietaieta_endcap_", "Photon_HtowoE_", "Photon_deltaR_electrons_", "Photon_deltaR_muons_"};
-// double MinXs[N] = {0, -3 , 0 , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-// double MaxXs[N] = {3,  3 , 130, 130, 40, 40, 100, 100, 260, 0.05, 0.1, 5., 5, 5};
+// "Photon_Phi_", "Photon_sigma_ietaieta_barrel_", "Photon_sigma_ietaieta_endcap_", "Photon_HtowoE_", "Photon_deltaR_electrons_", "Photon_deltaR_jets_", "Photon_deltaR_muons_"};
+// double MinXs[N] = {0, -3 , 0 , 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, 0, 0};
+// double MaxXs[N] = {3,  3 , 130, 130, 40, 40, 100, 100, 260, 4, 0.05, 0.1, 0.06, 5, 5, 5};
 // TString XTitles[N] = {"#left|#eta#right|_{#gamma}", "#eta_{#gamma}", "RhoCorrPhotonIsobarrel", "RhoCorrPhotonIsoendcap", "RhoCorrNeutralHadronIsobarrel",
-// "RhoCorrNeutralHadronIsoendcap", "RhoCorrChargedHadronIsobarrel", "RhoCorrChargedHadronIsoendcap", "p_{T}(#gamma) [GeV]",   "#sigma i#etai#eta barrel",
-// "#sigma i#etai#eta endcap",  "H/E", "#DeltaR(#gamma, e)", "#DeltaR(#gamma, #mu)"};
+// "RhoCorrNeutralHadronIsoendcap", "RhoCorrChargedHadronIsobarrel", "RhoCorrChargedHadronIsoendcap", "p_{T}(#gamma) [GeV]",  "#phi_{#gamma}",  "#sigma i#etai#eta barrel",
+// "#sigma i#etai#eta endcap",  "H/E", "#DeltaR(#gamma, e)", "#DeltaR(#gamma, jets)", "#DeltaR(#gamma, #mu)"};
+
+//MuMu variables
+const int N = 14;
+int RebinFacts[N] = {25, 22, 30, 30, 30, 30, 28, 28, 11, 3, 22, 20, 20, 38}; // NminusOne
+
+//Variables
+TString Variable;
+TString Variables[N] = {"Photon_AbsEta_", "Photon_Eta_", "Photon_RhoCorrectedPFPhotonIso_barrel_",  "Photon_RhoCorrectedPFPhotonIso_endcap_", "Photon_RhoCorrectedPFNeutralHadronIso_barrel_",
+"Photon_RhoCorrectedPFNeutralHadronIso_endcap_", "Photon_RhoCorrectedPFChargedHadronIso_barrel_", "Photon_RhoCorrectedPFChargedHadronIso_endcap_", "Photon_Pt_",
+ "Photon_sigma_ietaieta_barrel_", "Photon_sigma_ietaieta_endcap_", "Photon_HtowoE_", "Photon_deltaR_electrons_", "Photon_deltaR_muons_"};
+double MinXs[N] = {0, -3 , 0 , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+double MaxXs[N] = {3,  3 , 130, 130, 40, 40, 100, 100, 260, 0.05, 0.1, 5., 5, 5};
+TString XTitles[N] = {"#left|#eta#right|_{#gamma}", "#eta_{#gamma}", "RhoCorrPhotonIsobarrel", "RhoCorrPhotonIsoendcap", "RhoCorrNeutralHadronIsobarrel",
+"RhoCorrNeutralHadronIsoendcap", "RhoCorrChargedHadronIsobarrel", "RhoCorrChargedHadronIsoendcap", "p_{T}(#gamma) [GeV]",   "#sigma i#etai#eta barrel",
+"#sigma i#etai#eta endcap",  "H/E", "#DeltaR(#gamma, e)", "#DeltaR(#gamma, #mu)"};
 
 void doControlPlotsPhotons(){
 setTDRStyle();

@@ -26,8 +26,8 @@ bool inclTop = true;
 //TString Obj = "EE/";
 TString Obj = "EMu/";
 
-//TString Cut = "TTbarPhotonAnalysis/";
-TString Cut = "TTbarDiLeptonAnalysis/";
+//TString Cut = "TTbarDiLeptonAnalysis/";
+TString Cut = "TTbarPhotonAnalysis/";
 
 TString RefSelection = "Ref selection/";  
 
@@ -38,8 +38,8 @@ TString Next = "patType1CorrectedPFMet/";
 TString Systematic = "central/";
 
 const int N = 5;
-int RebinFacts[N] = {1, 10, 2, 10, 10}; //Pre photon requirement
-//int RebinFacts[N] = {4, 24, 2, 10, 18}; //Post photon requirement
+//int RebinFacts[N] = {1, 10, 2, 10, 10}; //Pre photon requirement
+int RebinFacts[N] = {4, 24, 2, 10, 18}; //Post photon requirement
 
 //Variables
 TString Variable;

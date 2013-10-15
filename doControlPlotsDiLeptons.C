@@ -38,12 +38,10 @@ TString Systematic = "central/";
 const int N = 5;
 int RebinFacts[N] = {5, 5, 2, 2, 2};
 TString Variable;
-TString Variables[N] = {"LeadMuon_AbsEta_", "SecondMuon_AbsEta_", "LeadMuon_Pt_", "SecondMuon_Pt_", "diMuon_Mass_"};
-//change to: TString Variables[N] = {"LeadLepton_AbsEta_", "SecondLepton_AbsEta_", "LeadLepton_Pt_", "SecondLepton_Pt_", "diLepton_Mass_"};
+TString Variables[N] = {"LeadLepton_AbsEta_", "SecondLepton_AbsEta_", "LeadLepton_Pt_", "SecondLepton_Pt_", "diLepton_Mass_"};
 double MinXs[N] = {0,    0,  0, 0, 0};
 double MaxXs[N] = {2.5,  2.6, 400, 400, 500};
-TString XTitles[N] = {"1^{st} #mu |#eta|", "2^{nd} #mu |#eta|", "1^{st} #mu p_{T} [GeV]", "2^{nd} #mu p_{T} [GeV]", "m(ll) [GeV]"};
-//change to: TString XTitles[N] = {"1^{st} l |#eta|", "2^{nd} l |#eta|", "1^{st} l p_{T}", "2^{nd} l p_{T}", "m(ll)"};
+TString XTitles[N] = {"1^{st} l |#eta|", "2^{nd} l |#eta|", "1^{st} l p_{T}", "2^{nd} l p_{T}", "m(ll)"};
 
 void doControlPlotsDiLeptons(){
 setTDRStyle();

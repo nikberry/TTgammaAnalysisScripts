@@ -104,7 +104,7 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 }
 
 TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection, TString Type, TString Next, TString Variable, int RebinFact, TString Systematic, TString Cut){
-	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version5/"+ Systematic;
+	TString dir = "/data1/TTGammaAnalysis/HistogramFiles/Version6/"+ Systematic;
 	
 	TString syst = "";
 	
@@ -133,7 +133,12 @@ TH1D* getSample(TString sample, double weight, TString Obj, TString RefSelection
 	//TDirectoryFile* folder = (TDirectoryFile*) file->Get("TTbarPlusMetAnalysis/QCD No Iso/Muon/");
 
 	cout << "file: "<< dir + sample + "_19584pb_PFElectron_PFMuon_PF2PATJets_patType1CorrectedPFMet_Photon"+syst+".root" << endl;
+	
+	if(Cut=="EventCount/"){
+	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable << endl;
+	} else 
 	cout << "folder: "<< Cut + Obj + RefSelection + Type + Next + Variable + "1btag" << endl;
+
 
 	TH1D* plot;
 	TH1D* plot2;
