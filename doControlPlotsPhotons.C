@@ -40,8 +40,8 @@ TString Next = "NminusOnePhotons/";
 TString Systematic = "central/";
 
 //MuMu variables
-const int N = 16;
-
+// const int N = 16;
+// 
 // //int RebinFacts[N] = {20, 20, 5, 5, 2, 2, 5, 5, 25, 10, 1, 5, 1, 20, 20, 20}; //AllPhotons 
 // int RebinFacts[N] = {25, 22, 30, 30, 30, 30, 28, 28, 11, 10, 3, 22, 20, 20, 20, 38}; //SignalPhotons
 // 
