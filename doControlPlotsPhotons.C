@@ -22,9 +22,9 @@ bool logPlot = false; //true for log plot
 bool inclTop = true;
 
 //choose object
-//TString Obj = "MuMu/";
+TString Obj = "MuMu/";
 //TString Obj = "EE/";
-TString Obj = "EMu/";
+//TString Obj = "EMu/";
 
 //TString Cut = "TTbarPhotonAnalysis/";
 TString Cut = "TTbarDiLeptonAnalysis/";
